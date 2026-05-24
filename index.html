@@ -3,17 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>极简个人主页</title>
+    <title>极简视觉主页</title>
     <style>
-        /* 1. 基础重置与变量设定 */
-        :root {
-            --bg-color: #ffffff;
-            --text-main: #111111;
-            --text-muted: #666666;
-            --link-hover: #0070f3;
-            --font-sans: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
-        }
-
+        /* 1. 基础全局样式 */
         * {
             box-sizing: border-box;
             margin: 0;
@@ -21,152 +13,146 @@
         }
 
         body {
-            font-family: var(--font-sans);
-            background-color: var(--bg-color);
-            color: var(--text-main);
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+            background-color: #ffffff;
+            color: #000000;
             line-height: 1.6;
-            letter-spacing: -0.01em;
-            -webkit-font-smoothing: antialiased;
         }
 
-        /* 2. 布局容器（核心：控制最大宽度，两边留白） */
-        .container {
-            max-width: 680px;
+        /* 页面居中容器，控制最大宽度 */
+        .wrapper {
+            max-width: 1200px;
             margin: 0 auto;
-            padding: 120px 24px;
+            padding: 80px 24px;
         }
 
-        /* 3. 排版样式 */
+        /* 网站顶部文字 */
         header {
-            margin-bottom: 64px;
-        }
-
-        h1 {
-            font-size: 2rem;
-            font-weight: 600;
-            margin-bottom: 8px;
-        }
-
-        .subtitle {
-            color: var(--text-muted);
-            font-size: 1.1rem;
-        }
-
-        section {
             margin-bottom: 48px;
         }
 
-        h2 {
-            font-size: 0.85rem;
-            text-transform: uppercase;
-            letter-spacing: 0.15em;
-            color: var(--text-muted);
-            margin-bottom: 24px;
+        h1 {
+            font-size: 1.8rem;
             font-weight: 500;
+            letter-spacing: -0.02em;
         }
 
-        p {
+        p.subtitle {
+            color: #666666;
             font-size: 1rem;
-            margin-bottom: 16px;
-            color: #222222;
+            margin-top: 4px;
         }
 
-        /* 4. 列表与链接设计（克制、无下划线） */
-        .item-list {
-            list-style: none;
-        }
-
-        .item {
+        /* 2. 核心图片布局组件 */
+        .gallery-container {
             display: flex;
-            justify-content: space-between;
-            align-items: baseline;
-            margin-bottom: 16px;
+            flex-direction: column;
+            gap: 24px; /* 控制图片之间的留白间距 */
         }
 
-        a {
-            color: var(--text-main);
-            text-decoration: none;
-            transition: color 0.15s ease;
+        /* 上方大图区 */
+        .hero-image-box {
+            width: 100%;
+            /* 设定大图比例，你可以根据需要调整高度 */
+            aspect-ratio: 16 / 9; 
+            overflow: hidden;
+            background-color: #f5f5f5; /* 图片加载前的占位背景色 */
         }
 
-        a:hover {
-            color: var(--link-hover);
+        /* 下方 4 张小图的网格布局 */
+        .grid-four-columns {
+            display: grid;
+            /* 核心：平分 4 列 */
+            grid-template-columns: repeat(4, 1fr); 
+            gap: 24px;
         }
 
-        .date {
-            font-size: 0.9rem;
-            color: var(--text-muted);
-            font-variant-numeric: tabular-nums;
+        .thumb-image-box {
+            width: 100%;
+            /* 设定小图为正方形，极简风格常用比例 */
+            aspect-ratio: 1 / 1; 
+            overflow: hidden;
+            background-color: #f5f5f5;
         }
 
+        /* 通用图片样式：保持比例不变形，并加入自然的缩放微动效 */
+        img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.4s ease;
+        }
+
+        img:hover {
+            transform: scale(1.02); /* 鼠标悬浮时轻微放大，增加交互精致感 */
+        }
+
+        /* 3. 页脚信息 */
         footer {
-            margin-top: 96px;
+            margin-top: 80px;
             font-size: 0.85rem;
-            color: var(--text-muted);
+            color: #999999;
+            text-align: center;
         }
 
-        /* 响应式微调 */
-        @media (max-width: 600px) {
-            .container {
-                padding: 60px 20px;
+        /* 4. 移动端响应式适配 */
+        @media (max-width: 768px) {
+            .wrapper {
+                padding: 40px 16px;
             }
-            .item {
-                flex-direction: column;
-                align-items: flex-start;
+            
+            /* 在手机端，4张小图自动变成 2×2 排列，防止图片过小 */
+            .grid-four-columns {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 16px;
             }
-            .date {
-                margin-top: 4px;
+
+            .gallery-container {
+                gap: 16px;
             }
         }
     </style>
 </head>
 <body>
 
-    <div class="container">
+    <div class="wrapper">
         
-        <!-- 头部：你是谁 -->
+        <!-- 极简字标/导航 -->
         <header>
-            <h1>你的名字</h1>
-            <p class="subtitle">设计师 / 开发者 / 极简主义者</p >
+            <h1>Visual Portfolio</h1>
+            <p class="subtitle">Less, but better.</p >
         </header>
 
-        <!-- 简介 -->
-        <section>
-            <p>你好，我是某某。我专注于用最纯粹的代码和视觉语言，创造清晰、实用且富有美感的数字体验。这里是我的一些日常思考与沉淀。</p >
-        </section>
+        <!-- 视觉展示区 -->
+        <div class="gallery-container">
+            
+            <!-- 上方大图 -->
+            <div class="hero-image-box">
+                <!-- 替换 src 后面的链接为你自己的大图路径 -->
+                < img src="https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=1200&q=80" alt="主展大图">
+            </div>
 
-        <!-- 作品/项目 -->
-        <section>
-            <h2>Selected Work</h2>
-            <ul class="item-list">
-                <li class="item">
-                    <a href=" " target="_blank">Minimalist Portfolio Theme</a >
-                    <span class="date">2026</span>
-                </li>
-                <li class="item">
-                    <a href="#" target="_blank">Lightweight CSS Boilerplate</a >
-                    <span class="date">2025</span>
-                </li>
-                <li class="item">
-                    <a href="#" target="_blank">Typography Exploration Tool</a >
-                    <span class="date">2024</span>
-                </li>
-            </ul>
-        </section>
+            <!-- 下方 4 个小图 -->
+            <div class="grid-four-columns">
+                <div class="thumb-image-box">
+                    < img src="https://images.unsplash.com/photo-1511556532299-8f662fc26c06?auto=format&fit=crop&w=400&q=80" alt="作品 1">
+                </div>
+                <div class="thumb-image-box">
+                    < img src="https://images.unsplash.com/photo-1509343256512-d77a5cb3791b?auto=format&fit=crop&w=400&q=80" alt="作品 2">
+                </div>
+                <div class="thumb-image-box">
+                    < img src="https://images.unsplash.com/photo-1542241647-9cbb2225278b?auto=format&fit=crop&w=400&q=80" alt="作品 3">
+                </div>
+                <div class="thumb-image-box">
+                    < img src="https://images.unsplash.com/photo-1550684848-fac1c5b4e853?auto=format&fit=crop&w=400&q=80" alt="作品 4">
+                </div>
+            </div>
 
-        <!-- 联络方式 -->
-        <section>
-            <h2>Connect</h2>
-            <ul class="item-list">
-                <li class="item"><a href="mailto:your@email.com">Email</a ></li>
-                <li class="item"><a href="#" target="_blank">GitHub</a ></li>
-                <li class="item"><a href="#" target="_blank">Twitter</a ></li>
-            </ul>
-        </section>
+        </div>
 
         <!-- 页脚 -->
         <footer>
-            <p>© 2026 Your Name. Less is more.</p >
+            <p>© 2026 Minimalism Grid. All rights reserved.</p >
         </footer>
 
     </div>
