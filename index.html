@@ -1,126 +1,175 @@
 <!DOCTYPE html>
-<html lang="zh">
+<html lang="zh-CN">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Du Huaxian — Oil Painter</title>
-<style>
-* { margin: 0; padding: 0; box-sizing: border-box; }
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>极简个人主页</title>
+    <style>
+        /* 1. 基础重置与变量设定 */
+        :root {
+            --bg-color: #ffffff;
+            --text-main: #111111;
+            --text-muted: #666666;
+            --link-hover: #0070f3;
+            --font-sans: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+        }
 
-:root {
-  --black: #111111;
-  --white: #f8f6f2;
-  --grey: #888;
-  --accent: #c8502a;
-}
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
 
-body {
-  font-family: 'Georgia', serif;
-  background: var(--white);
-  color: var(--black);
-  overflow-x: hidden;
-}
+        body {
+            font-family: var(--font-sans);
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            line-height: 1.6;
+            letter-spacing: -0.01em;
+            -webkit-font-smoothing: antialiased;
+        }
 
-/* NAVIGATION */
-nav {
-  position: fixed;
-  top: 0; left: 0; right: 0;
-  z-index: 100;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 24px 48px;
-  background: rgba(248,246,242,0.96);
-  backdrop-filter: blur(8px);
-  border-bottom: 1px solid rgba(0,0,0,0.08);
-}
+        /* 2. 布局容器（核心：控制最大宽度，两边留白） */
+        .container {
+            max-width: 680px;
+            margin: 0 auto;
+            padding: 120px 24px;
+        }
 
-.nav-logo {
-  font-size: 17px;
-  letter-spacing: 0.12em;
-  text-transform: uppercase;
-  cursor: pointer;
-  color: var(--black);
-  text-decoration: none;
-}
+        /* 3. 排版样式 */
+        header {
+            margin-bottom: 64px;
+        }
 
-.nav-links {
-  display: flex;
-  gap: 40px;
-  list-style: none;
-}
+        h1 {
+            font-size: 2rem;
+            font-weight: 600;
+            margin-bottom: 8px;
+        }
 
-.nav-links a {
-  font-size: 12px;
-  letter-spacing: 0.15em;
-  text-transform: uppercase;
-  color: var(--black);
-  text-decoration: none;
-  cursor: pointer;
-  transition: color 0.2s;
-}
+        .subtitle {
+            color: var(--text-muted);
+            font-size: 1.1rem;
+        }
 
-.nav-links a:hover,
-.nav-links a.active {
-  color: var(--accent);
-}
+        section {
+            margin-bottom: 48px;
+        }
 
-/* PAGES */
-.page {
-  display: block;
-  min-height: 100vh;
-  padding-top: 80px;
-}
+        h2 {
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            letter-spacing: 0.15em;
+            color: var(--text-muted);
+            margin-bottom: 24px;
+            font-weight: 500;
+        }
 
-.page.active {
-  display: block;
-}
+        p {
+            font-size: 1rem;
+            margin-bottom: 16px;
+            color: #222222;
+        }
 
-/* HOME PAGE */
-#home { padding-top: 0; }
+        /* 4. 列表与链接设计（克制、无下划线） */
+        .item-list {
+            list-style: none;
+        }
 
-.hero {
-  height: 100vh;
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  overflow: hidden;
-  position: relative;
-}
+        .item {
+            display: flex;
+            justify-content: space-between;
+            align-items: baseline;
+            margin-bottom: 16px;
+        }
 
-.hero-canvas {
-  width: 100%;
-  height: 100%;
-  background: linear-gradient(160deg, #1a2a4a 0%, #2a4a6a 30%, #c86828 60%, #e8b040 85%, #4a6a3a 100%);
-  position: relative;
-  overflow: hidden;
-}
+        a {
+            color: var(--text-main);
+            text-decoration: none;
+            transition: color 0.15s ease;
+        }
 
-.hero-figures {
-  position: absolute;
-  bottom: 15%;
-  left: 8%;
-  right: 8%;
-  height: 60%;
-  display: flex;
-  align-items: flex-end;
-  gap: 6px;
-}
+        a:hover {
+            color: var(--link-hover);
+        }
 
-.figure {
-  flex: 1;
-  border-radius: 40% 40% 0 0;
-  opacity: 0.85;
-}
+        .date {
+            font-size: 0.9rem;
+            color: var(--text-muted);
+            font-variant-numeric: tabular-nums;
+        }
 
-.hero-text {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  padding: 80px 64px;
-  background: var(--white);
-}
+        footer {
+            margin-top: 96px;
+            font-size: 0.85rem;
+            color: var(--text-muted);
+        }
 
-.hero-eyebrow { font-size: 11px; letter-spacing: 0.25em; text-transform: uppercase; color: var(--grey); margin-bottom: 24px; }
-.hero-name { font-size: clamp(44px, 5vw, 70px); font-weight: normal; line-height: 1.05; letter-spacing: -0.02em; margin-bottom: 8px; }
-.hero-name-zh { font-size: clamp(26px, 3vw, 40px); color: var(--grey); font-weight: normal; margin-bottom: 32px; letter-spacing: 0.1em; }
-.hero-divider { width: 48px; height: 2px;
+        /* 响应式微调 */
+        @media (max-width: 600px) {
+            .container {
+                padding: 60px 20px;
+            }
+            .item {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+            .date {
+                margin-top: 4px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        
+        <!-- 头部：你是谁 -->
+        <header>
+            <h1>你的名字</h1>
+            <p class="subtitle">设计师 / 开发者 / 极简主义者</p >
+        </header>
+
+        <!-- 简介 -->
+        <section>
+            <p>你好，我是某某。我专注于用最纯粹的代码和视觉语言，创造清晰、实用且富有美感的数字体验。这里是我的一些日常思考与沉淀。</p >
+        </section>
+
+        <!-- 作品/项目 -->
+        <section>
+            <h2>Selected Work</h2>
+            <ul class="item-list">
+                <li class="item">
+                    <a href=" " target="_blank">Minimalist Portfolio Theme</a >
+                    <span class="date">2026</span>
+                </li>
+                <li class="item">
+                    <a href="#" target="_blank">Lightweight CSS Boilerplate</a >
+                    <span class="date">2025</span>
+                </li>
+                <li class="item">
+                    <a href="#" target="_blank">Typography Exploration Tool</a >
+                    <span class="date">2024</span>
+                </li>
+            </ul>
+        </section>
+
+        <!-- 联络方式 -->
+        <section>
+            <h2>Connect</h2>
+            <ul class="item-list">
+                <li class="item"><a href="mailto:your@email.com">Email</a ></li>
+                <li class="item"><a href="#" target="_blank">GitHub</a ></li>
+                <li class="item"><a href="#" target="_blank">Twitter</a ></li>
+            </ul>
+        </section>
+
+        <!-- 页脚 -->
+        <footer>
+            <p>© 2026 Your Name. Less is more.</p >
+        </footer>
+
+    </div>
+
+</body>
+</html>
