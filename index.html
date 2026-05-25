@@ -6,212 +6,256 @@
     <title>Official Website of Oil Painter Du Huaxian 油画家杜华显先个人官方网站</title>
     <meta name="description" content="欢迎访问中国美术家协会会员、杜华显个人网站，油画家杜华显的官方网站。本站收录了杜华显先生的经典油画作品，包括《渔歌朝晖迎华诞》系列、《幸福生活之二》、荷花系列及各地写生作品，展现点、线、面的形式语言与当代色块融合的表现主义艺术风格。">
     <meta name="keywords" content="杜华显, 杜华显油画, 杜华显个人网站，杜华显官网, 中国美协会员杜华显, 杜华显渔歌朝晖迎华诞, 杜华显当代油画, 杜华显作品 杜华显油画">
-</head>
+    
     <style>
-       .carousel-container {
-  width: 100%;
-  overflow: hidden;
-  position: relative;aspect-ratio: 16 / 9;
+        .carousel-container {
+            width: 100%;
+            overflow: hidden;
+            position: relative;
+            aspect-ratio: 16 / 9;
+        }
 
-}
+        .carousel-track {
+            display: flex;
+            width: 1650%;
+            animation: slideAnimation 60s infinite linear;
+        }
 
-.carousel-track {
-  display: flex;
-  width: 1650%;
-  animation: slideAnimation 60s infinite linear;
-}
-.carousel-container:hover .carousel-track {
-    animation-play-state: paused;
-    cursor: pointer; /* 鼠标变成手型，提示可以点击 */
-}
-.carousel-slide {
-  width: 5.6%;margin-right: 0.2%;
-  flex-shrink: 0;
-}
+        .carousel-container:hover .carousel-track {
+            animation-play-state: paused;
+            cursor: pointer; /* 鼠标变成手型，提示可以点击 */
+        }
 
-.carousel-slide img {
-  width: 100%;
-  height: auto: 
-  object-fit: cover;
-}
+        .carousel-slide {
+            width: 5.6%;
+            margin-right: 0.2%;
+            flex-shrink: 0;
+        }
 
-@keyframes slideAnimation {
-  0% { transform: translateX(0); }
-  100% { transform: translateX(-94.1%); }
-}
+        .carousel-slide img {
+            width: 100%;
+            height: auto; /* ⚡ 修复：之前这里写成了冒号 : */
+            object-fit: cover;
+        }
+
+        @keyframes slideAnimation {
+            0% { transform: translateX(0); }
+            100% { transform: translateX(-94.1%); }
+        }
+
         .grid-four-columns {
-display: grid;
-grid-template-columns: repeat(4, 1fr);
-gap: 10px;margin-top: 30px;
-}
-.thumb-image-box img {
-width: 100%;
-height: 300px;
-object-fit: cover;
-}
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 10px;
+            margin-top: 30px;
+        }
+
+        .thumb-image-box img {
+            width: 100%;
+            height: 300px;
+            object-fit: cover;
+        }
+
         /* 弹窗遮罩背景 */
-.modal-overlay {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: rgba(0, 0, 0, 0.9); /* 纯黑半透明，烘托油画色彩 */
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    z-index: 9999;
-    opacity: 0;
-    pointer-events: none;
-    transition: opacity 0.3s ease;
-}
+        .modal-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.9); /* 纯黑半透明，烘托油画色彩 */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 9999;
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.3s ease;
+        }
 
-/* 弹窗激活时的状态 */
-.modal-overlay.active {
-    opacity: 1;
-    pointer-events: auto;
-}
+        /* 弹窗激活时的状态 */
+        .modal-overlay.active {
+            opacity: 1;
+            pointer-events: auto;
+        }
 
-/* 弹窗内容包裹盒 */
-.modal-content {
-    background: #fff;
-    padding: 24px;
-    max-width: 85vw;
-    max-height: 90vh;
-    text-align: center;
-    position: relative;
-    box-shadow: 0 20px 40px rgba(0,0,0,0.6);
-}
+        /* 弹窗内容包裹盒 */
+        .modal-content {
+            background: #fff;
+            padding: 24px;
+            max-width: 85vw;
+            max-height: 90vh;
+            text-align: center;
+            position: relative;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.6);
+        }
 
-/* 弹出的大图样式 */
-.modal-img {
-    max-width: 100%;
-    max-height: 70vh; /* 确保图片不会超出屏幕高度 */
-    object-fit: contain;
-    display: block;
-    margin: 0 auto;
-}
+        /* 弹出的大图样式 */
+        .modal-img {
+            max-width: 100%;
+            max-height: 70vh; /* 确保图片不会超出屏幕高度 */
+            object-fit: contain;
+            display: block;
+            margin: 0 auto;
+        }
 
-/* 作品信息文字布局 */
-.modal-info {
-    margin-top: 15px;
-    font-family: "PingFang SC", "Microsoft YaHei", sans-serif;
-}
-.modal-info h3 {
-    margin: 0 0 6px 0;
-    font-size: 20px;
-    color: #111;
-}
-.modal-info p {
-    margin: 0;
-    font-size: 14px;
-    color: #666;
-}
+        /* 作品信息文字布局 */
+        .modal-info {
+            margin-top: 15px;
+            font-family: "PingFang SC", "Microsoft YaHei", sans-serif;
+        }
 
-/* 关闭按钮 */
-.modal-close {
-    position: absolute;
-    top: -40px;
-    right: 0;
-    font-size: 35px;
-    color: #fff;
-    cursor: pointer;
-    line-height: 1;
-}
-.modal-close:hover {
-    color: #ddd;
-}
-</style>
+        .modal-info h3 {
+            margin: 0 0 6px 0;
+            font-size: 20px;
+            color: #111;
+        }
+
+        .modal-info p {
+            margin: 0;
+            font-size: 14px;
+            color: #666;
+        }
+
+        /* 关闭按钮 */
+        .modal-close {
+            position: absolute;
+            top: -40px;
+            right: 0;
+            font-size: 35px;
+            color: #fff;
+            cursor: pointer;
+            line-height: 1;
+        }
+
+        .modal-close:hover {
+            color: #ddd;
+        }
+
+        /* 个人简介模块样式 */
+        .artist-profile-section {
+            padding: 60px 20px;
+            background-color: #ffffff;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+            color: #333333;
+            margin-top: 40px; /* 让它跟上面的四个小图保持一点高级的留白空间 */
+        }
+
+        .profile-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            flex-direction: row;
+            justify-content: space-between;
+            align-items: flex-start;
+            gap: 40px;
+        }
+
+        .profile-text {
+            flex: 2;
+        }
+
+        .profile-title {
+            font-size: 28px;
+            font-weight: 600;
+            margin: 0 0 10px 0;
+            letter-spacing: 1px;
+        }
+
+        .profile-subtitle {
+            font-size: 16px;
+            color: #666666;
+            margin: 0 0 25px 0;
+        }
+
+        .profile-bio p {
+            font-size: 15px;
+            line-height: 1.8;
+            color: #444444;
+            margin-bottom: 15px;
+            text-align: justify;
+            white-space: pre-line; /* 保持原有的换行格式 */
+        }
+
+        .profile-downloads {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            padding-top: 10px;
+        }
+
+        .download-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            padding: 12px 24px;
+            background-color: #111111;
+            color: #ffffff;
+            text-decoration: none;
+            font-size: 14px;
+            border-radius: 4px;
+            transition: background-color 0.3s ease;
+        }
+
+        .download-btn:hover {
+            background-color: #444444;
+        }
+
+        .download-hint {
+            font-size: 12px;
+            color: #999999;
+            margin-top: 8px;
+        }
+
+        @media (max-width: 768px) {
+            .profile-container {
+                flex-direction: column;
+                gap: 30px;
+            }
+            .profile-downloads {
+                width: 100%;
+            }
+            .download-btn {
+                width: 100%;
+                justify-content: center;
+            }
+        }
+    </style>
 </head>
-<div class="modal-overlay" id="imageModal">
-    <div class="modal-content">
-        <span class="modal-close" id="modalClose">&times;</span>
-        <img src="" alt="作品放大图" class="modal-img" id="modalImg">
-        <div class="modal-info">
-            <h3 id="infoTitle">作品名称</h3>
-            <p id="infoDetails">尺寸 / 年代</p>
-        </div>
-    </div>
-</div>
+<body>
 
-<script>
-    const track = document.querySelector('.carousel-track');
-    const modal = document.getElementById('imageModal');
-    const modalImg = document.getElementById('modalImg');
-    const modalClose = document.getElementById('modalClose');
-    const infoTitle = document.getElementById('infoTitle');
-    const infoDetails = document.getElementById('infoDetails');
-
-    // 监听轮播图片点击
-    track.addEventListener('click', function(e) {
-        if (e.target.tagName === 'IMG') {
-            const img = e.target;
-            
-            // 提取图片上绑定的艺术品档案
-            const title = img.getAttribute('data-title') || '未题名';
-            const size = img.getAttribute('data-size') || '尺寸未注明';
-            const year = img.getAttribute('data-year') || '年代未知';
-            
-            // 变换弹窗内容
-            modalImg.src = img.src;
-            infoTitle.textContent = title;
-            infoDetails.textContent = "尺寸: " + size + "  |  年代: " + year + "年";
-            
-            // 展开弹窗
-            modal.classList.add('active');
-        }
-    });
-
-    // 点击右上角 X 关闭
-    modalClose.addEventListener('click', function() {
-        modal.classList.remove('active');
-    });
-
-    // 点击黑背景也能关闭
-    modal.addEventListener('click', function(e) {
-        if (e.target === modal) {
-            modal.classList.remove('active');
-        }
-    });
-</script>
-   </body>
-</html>
     <div class="wrapper">
         
-        <!-- 极简字标/导航 -->
         <header>
             <h1>huaxian du 杜华显</h1>
-            <p class="subtitle">dhx1974@gmail.com, Under development.</p >
+            <p class="subtitle">dhx1974@gmail.com, Under development.</p>
         </header>
 
-        <!-- 视觉展示区 -->
         <div class="gallery-container">
             
-            <!-- 上方大图 -->
             <div class="carousel-container">
-  <div class="carousel-track">
-    <div class="carousel-slide"><img src="haibian.jpg" data-title="海边系列" data-size="80x100cm" data-year="2024"></div>
-<div class="carousel-slide"><img src="yujia3.jpg" data-title="渔家系列之三" data-size="100x120cm" data-year="2025"></div>
-<div class="carousel-slide"><img src="yujia1.jpg" data-title="渔家系列之一" data-size="100x120cm" data-year="2025"></div>
-<div class="carousel-slide"><img src="yujia4.jpg" data-title="渔家系列之四" data-size="100x120cm" data-year="2025"></div>
-<div class="carousel-slide"><img src="yujia6.jpg" data-title="渔家系列之六" data-size="100x120cm" data-year="2025"></div>
-<div class="carousel-slide"><img src="yumin11.jpg" data-title="渔民系列十一" data-size="90x110cm" data-year="2025"></div>
-<div class="carousel-slide"><img src="yujia8.jpg" data-title="渔家系列之八" data-size="100x120cm" data-year="2025"></div>
-<div class="carousel-slide"><img src="yujia10.jpg" data-title="渔家系列之十" data-size="100x120cm" data-year="2025"></div>
-<div class="carousel-slide"><img src="yujia9.jpg" data-title="渔家系列之九" data-size="100x120cm" data-year="2025"></div>
-<div class="carousel-slide"><img src="yangguang.jpg" data-title="阳光系列" data-size="80x80cm" data-year="2026"></div>
-<div class="carousel-slide"><img src="hehua1.jpg" data-title="荷花系列之一" data-size="60x60cm" data-year="2026"></div>
-<div class="carousel-slide"><img src="hehua2.jpg" data-title="荷花系列之二" data-size="60x60cm" data-year="2026"></div>
-<div class="carousel-slide"><img src="hehua3.jpg" data-title="荷花系列之三" data-size="60x60cm" data-year="2026"></div>
-<div class="carousel-slide"><img src="hehua4.jpg" data-title="荷花系列之四" data-size="60x60cm" data-year="2026"></div>
-<div class="carousel-slide"><img src="hehua5.jpg" data-title="荷花系列之五" data-size="60x60cm" data-year="2026"></div>
-<div class="carousel-slide"><img src="hehua6.jpg" data-title="荷花系列之六" data-size="60x60cm" data-year="2026"></div>
-<div class="carousel-slide"><img src="yangguang2.jpg" data-title="阳光系列之二" data-size="80x80cm" data-year="2026"></div>
-    </div> 
-                
-</div>
-
-            <!-- 下方 4 个小图 -->
+                <div class="carousel-track">
+                    <div class="carousel-slide"><img src="haibian.jpg" data-title="海边系列" data-size="80x100cm" data-year="2024"></div>
+                    <div class="carousel-slide"><img src="yujia3.jpg" data-title="渔家系列之三" data-size="100x120cm" data-year="2025"></div>
+                    <div class="carousel-slide"><img src="yujia1.jpg" data-title="渔家系列之一" data-size="100x120cm" data-year="2025"></div>
+                    <div class="carousel-slide"><img src="yujia4.jpg" data-title="渔家系列之四" data-size="100x120cm" data-year="2025"></div>
+                    <div class="carousel-slide"><img src="yujia6.jpg" data-title="渔家系列之六" data-size="100x120cm" data-year="2025"></div>
+                    <div class="carousel-slide"><img src="yumin11.jpg" data-title="渔民系列十一" data-size="90x110cm" data-year="2025"></div>
+                    <div class="carousel-slide"><img src="yujia8.jpg" data-title="渔家系列之八" data-size="100x120cm" data-year="2025"></div>
+                    <div class="carousel-slide"><img src="yujia10.jpg" data-title="渔家系列之十" data-size="100x120cm" data-year="2025"></div>
+                    <div class="carousel-slide"><img src="yujia9.jpg" data-title="渔家系列之九" data-size="100x120cm" data-year="2025"></div>
+                    <div class="carousel-slide"><img src="yangguang.jpg" data-title="阳光系列" data-size="80x80cm" data-year="2026"></div>
+                    <div class="carousel-slide"><img src="hehua1.jpg" data-title="荷花系列之一" data-size="60x60cm" data-year="2026"></div>
+                    <div class="carousel-slide"><img src="hehua2.jpg" data-title="荷花系列之二" data-size="60x60cm" data-year="2026"></div>
+                    <div class="carousel-slide"><img src="hehua3.jpg" data-title="荷花系列之三" data-size="60x60cm" data-year="2026"></div>
+                    <div class="carousel-slide"><img src="hehua4.jpg" data-title="荷花系列之四" data-size="60x60cm" data-year="2026"></div>
+                    <div class="carousel-slide"><img src="hehua5.jpg" data-title="荷花系列之五" data-size="60x60cm" data-year="2026"></div>
+                    <div class="carousel-slide"><img src="hehua6.jpg" data-title="荷花系列之六" data-size="60x60cm" data-year="2026"></div>
+                    <div class="carousel-slide"><img src="yangguang2.jpg" data-title="阳光系列之二" data-size="80x80cm" data-year="2026"></div>
+                </div> 
+            </div>
+            
             <div class="grid-four-columns">
                 <div class="thumb-image-box">
                     <img src="nangua.jpg">
@@ -226,19 +270,21 @@ object-fit: cover;
                     <img src="yumin11.jpg">
                 </div>
             </div>
+
             <section class="artist-profile-section">
-    <div class="profile-container">
-        
-        <div class="profile-text">
-            <h2 class="profile-title">杜华显 (Huaxian Du)</h2>
-            <p class="profile-subtitle">中国美术家协会会员 / 职业油画家</p>
-            
-            <div class="profile-bio">
-                <p>Du Huaxian
+                <div class="profile-container">
+                    
+                    <div class="profile-text">
+                        <h2 class="profile-title">杜华显 (Huaxian Du)</h2>
+                        <p class="profile-subtitle">中国美术家协会会员 / 职业油画家</p>
+                        
+                        <div class="profile-bio">
+                            <p>Du Huaxian
 From Weihai, Shandong
 Member of the China Artists Association
 Special Artist at the Beijing Academy of Contemporary Chinese Expressive Oil Painting
 Graduate of the Oil Painting Program at Shandong University of Arts
+
 November 2025: *Fishermen’s Songs and Morning Glow Welcoming the National Day (Part Two)* was selected for the 10th China Beijing International Art Biennale Theme Exhibition (China Artists Association)
 April 2025: *The Joy of Harvest* was selected for the 3rd National Gouache Painting Exhibition (China Artists Association)
 July 2024: Du Huaxian’s *Fishermen’s Songs and Morning Glow Celebrate the National Day* (204 x 140 cm, oil on canvas) was selected for the Oil Painting Section of the 14th National Art Exhibition (held every five years, China Artists Association)
@@ -247,21 +293,19 @@ July 2024: Du Huaxian’s *Fishermen’s Songs and Morning Glow Celebrate the Na
 2023: “The Land of Dragons” selected for the Small-Scale Oil Painting Exhibition of the China Oil Painting Society (China Oil Painting Society)
 2023: *Happy Life No. 2* in *Ode to the Times*—2022 China Hundred Masters Jinling Painting Exhibition (China Artists Association)
 2023: *Night Scene at the Fishing Port No. 11* in *The Magnificent Frontier*—The 5th China Ethnic Art Biennial (China Artists Association)
-2022: *Night Scene at the Fishing Port No. 10*
-2022 National Ethnic Minority Art Exhibition (China Artists Association) 2023 *Happy Life I* 3rd “Xiangning as Before” National Art Exhibition (China Artists Association)
+2022: *Night Scene at the Fishing Port No. 10* 2022 National Ethnic Minority Art Exhibition (China Artists Association) 
+2023 *Happy Life I* 3rd “Xiangning as Before” National Art Exhibition (China Artists Association)
 2018 *Affection for Weihai* Selected for “Chasing Dreams · Weihaiwei” 2018 National Landscape and Still Life Oil Painting Exhibition (China Artists Association)
 
-Translated with DeepL.com (free version)
-                    
-                    个人简历
+个人简历
 
 杜华显
 山东威海人
 
 中国美术家协会会员
 北京当代中国写意油画研究院特约创作员
-
 山东艺术学院油画专业毕业
+
 艺术履历：
 一、国家级展览部分
 2025年11月《渔歌朝晖迎华诞之二》入选第十届中国北京国际美术双年展主题展（中国美术家协会）
@@ -277,128 +321,87 @@ Translated with DeepL.com (free version)
 2018年《情系威海》入选“逐梦·威海卫”2018全国风景、静物油画作品展（中国美术家协会)
 
 二、省级展览部分
-2025.10 《大运之荷》入选2025“北京意象·活力通州” 入选并在中国美术馆展出（北京美术家协会
+2025.10 《大运之荷》入选2025“北京意象·活力通州” 入选并在中国美术馆展出（北京美术家协会）
 2025年《福海》第五届新疆油画展
 2024年《渔获》入选北京美协第二十一届新人新作展
 2023年作品参加北京艺术博览会
-2023年《荣祥广场一角》入选“北京意象·多彩顺义”大型美术创作活动并在中国美术馆展出（北京美术家协会）
+2023年《荣祥广场一角}$入选“北京意象·多彩顺义”大型美术创作活动并在中国美术馆展出（北京美术家协会）
 2019年作品《姑射 猕猴桃谷》入选北京意象昌平大型美术创作并在中国美术馆展出（北京美术家协会）
 2018年作品《夜色》入选北京意象 诗话海淀大型美术创作并在中国美术馆展出（北京美术家协会）
 2018年，2019年作品入选得境取象东亿中国油画展
-2018年《正午高原》入选第七届高原展并获优秀奖
-</p>
-            </div>
-        </div>
+2018年《正午高原》入选第七届高原展并获优秀奖</p>
+                        </div>
+                    </div>
 
-        <div class="profile-downloads">
-            <a href="./du-huaxian-portfolio.pdf" target="_blank" class="download-btn">
-                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v4M7 10l5 5 5-5M12 15V3"/></svg>
-                下载艺术作品集 (Download Portfolio PDF)
-            </a>
-            <p class="download-hint">提示：点击可直接在线浏览或下载完整版 PDF 作品集</p>
-        </div>
+                    <div class="profile-downloads">
+                        <a href="./du-huaxian-portfolio.pdf" target="_blank" class="download-btn">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v4M7 10l5 5 5-5M12 15V3"/></svg>
+                            下载艺术作品集 (Download Portfolio PDF)
+                        </a>
+                        <p class="download-hint">提示：点击可直接在线浏览或下载完整版 PDF 作品集</p>
+                    </div>
 
-    </div>
-</section>
-
-<style>
-.artist-profile-section {
-    padding: 60px 20px;
-    background-color: #ffffff;
-    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
-    color: #333333;
-    margin-top: 40px; /* 让它跟上面的四个小图保持一点高级的留白空间 */
-}
-
-.profile-container {
-    max-width: 1200px;
-    margin: 0 auto;
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    align-items: flex-start;
-    gap: 40px;
-}
-
-.profile-text {
-    flex: 2;
-}
-
-.profile-title {
-    font-size: 28px;
-    font-weight: 600;
-    margin: 0 0 10px 0;
-    letter-spacing: 1px;
-}
-
-.profile-subtitle {
-    font-size: 16px;
-    color: #666666;
-    margin: 0 0 25px 0;
-}
-
-.profile-bio p {
-    font-size: 15px;
-    line-height: 1.8;
-    color: #444444;
-    margin-bottom: 15px;
-    text-align: justify;
-}
-
-.profile-downloads {
-    flex: 1;
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-    padding-top: 10px;
-}
-
-.download-btn {
-    display: inline-flex;
-    align-items: center;
-    gap: 10px;
-    padding: 12px 24px;
-    background-color: #111111;
-    color: #ffffff;
-    text-decoration: none;
-    font-size: 14px;
-    border-radius: 4px;
-    transition: background-color 0.3s ease;
-}
-
-.download-btn:hover {
-    background-color: #444444;
-}
-
-.download-hint {
-    font-size: 12px;
-    color: #999999;
-    margin-top: 8px;
-}
-
-@media (max-width: 768px) {
-    .profile-container {
-        flex-direction: column;
-        gap: 30px;
-    }
-    .profile-downloads {
-        width: 100%;
-    }
-    .download-btn {
-        width: 100%;
-        justify-content: center;
-    }
-}
-</style>
+                </div>
+            </section>
 
         </div>
 
-        <!-- 页脚 -->
         <footer>
-            <p>© 2026 Minimalism Grid. All rights reserved.</p >
+            <p>© 2026 Minimalism Grid. All rights reserved.</p>
         </footer>
 
     </div>
 
+    <div class="modal-overlay" id="imageModal">
+        <div class="modal-content">
+            <span class="modal-close" id="modalClose">&times;</span>
+            <img src="" alt="作品放大图" class="modal-img" id="modalImg">
+            <div class="modal-info">
+                <h3 id="infoTitle">作品名称</h3>
+                <p id="infoDetails">尺寸 / 年代</p>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const track = document.querySelector('.carousel-track');
+        const modal = document.getElementById('imageModal');
+        const modalImg = document.getElementById('modalImg');
+        const modalClose = document.getElementById('modalClose');
+        const infoTitle = document.getElementById('infoTitle');
+        const infoDetails = document.getElementById('infoDetails');
+
+        // 监听轮播图片点击
+        track.addEventListener('click', function(e) {
+            if (e.target.tagName === 'IMG') {
+                const img = e.target;
+                
+                // 提取图片上绑定的艺术品档案
+                const title = img.getAttribute('data-title') || '未题名';
+                const size = img.getAttribute('data-size') || '尺寸未注明';
+                const year = img.getAttribute('data-year') || '年代未知';
+                
+                // 变换弹窗内容
+                modalImg.src = img.src;
+                infoTitle.textContent = title;
+                infoDetails.textContent = "尺寸: " + size + "  |  年代: " + year + "年";
+                
+                // 展开弹窗
+                modal.classList.add('active');
+            }
+        });
+
+        // 点击右上角 X 关闭
+        modalClose.addEventListener('click', function() {
+            modal.classList.remove('active');
+        });
+
+        // 点击黑背景也能关闭
+        modal.addEventListener('click', function(e) {
+            if (e.target === modal) {
+                modal.classList.remove('active');
+            }
+        });
+    </script>
 </body>
 </html>
