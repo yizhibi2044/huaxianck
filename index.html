@@ -20,7 +20,10 @@
   width: 1650%;
   animation: slideAnimation 60s infinite linear;
 }
-
+.carousel-container:hover .carousel-track {
+    animation-play-state: paused;
+    cursor: pointer; /* 鼠标变成手型，提示可以点击 */
+}
 .carousel-slide {
   width: 5.6%;margin-right: 0.2%;
   flex-shrink: 0;
