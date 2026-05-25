@@ -17,24 +17,24 @@
 
 .carousel-track {
   display: flex;
-  width: 1000%;
+  width: max-content; 
   animation: slideAnimation 60s infinite linear;
 }
 
 .carousel-slide {
-  width: 9%;margin-right: 0.2%;
+  width: 100vw;
   flex-shrink: 0;
 }
 
 .carousel-slide img {
   width: 100%;
-  height: auto: 
+  height: 500px; 
   object-fit: cover;
 }
 
 @keyframes slideAnimation {
   0% { transform: translateX(0); }
-  100% { transform: translateX(-90%); }
+  100% { transform: translateX(-50%); }
 }
         .grid-four-columns {
 display: grid;
