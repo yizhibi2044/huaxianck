@@ -92,6 +92,119 @@ object-fit: cover;
                     <img src="yumin11.jpg">
                 </div>
             </div>
+            <section class="artist-profile-section">
+    <div class="profile-container">
+        
+        <div class="profile-text">
+            <h2 class="profile-title">杜华先 (Huaxian Du)</h2>
+            <p class="profile-subtitle">中国美术家协会会员 / 职业油画家</p>
+            
+            <div class="profile-bio">
+                <p>1974年出生。毕业于中国国家画院高研班，现居北京。长期致力于当代油画创作与探索，师从著名艺术家赵培智先生。作品强调点、线、面的形式语言，将当代色块融合于具象表现主义之中，形成了鲜明而富有张力的个人艺术风格。</p>
+                <p>主要代表作品包括《渔歌朝晖迎华诞》系列、《幸福生活之二》、荷花系列及各地建筑、自然风景写生作品。作品多次入选全国美术作品展览、中国北京国际美术双年展等国家级重大展览并被收藏。</p>
+            </div>
+        </div>
+
+        <div class="profile-downloads">
+            <a href="./du-huaxian-portfolio.pdf" target="_blank" class="download-btn">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v4M7 10l5 5 5-5M12 15V3"/></svg>
+                下载艺术作品集 (Download Portfolio PDF)
+            </a>
+            <p class="download-hint">提示：点击可直接在线浏览或下载完整版 PDF 作品集</p>
+        </div>
+
+    </div>
+</section>
+
+<style>
+.artist-profile-section {
+    padding: 60px 20px;
+    background-color: #ffffff;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+    color: #333333;
+    margin-top: 40px; /* 让它跟上面的四个小图保持一点高级的留白空间 */
+}
+
+.profile-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 40px;
+}
+
+.profile-text {
+    flex: 2;
+}
+
+.profile-title {
+    font-size: 28px;
+    font-weight: 600;
+    margin: 0 0 10px 0;
+    letter-spacing: 1px;
+}
+
+.profile-subtitle {
+    font-size: 16px;
+    color: #666666;
+    margin: 0 0 25px 0;
+}
+
+.profile-bio p {
+    font-size: 15px;
+    line-height: 1.8;
+    color: #444444;
+    margin-bottom: 15px;
+    text-align: justify;
+}
+
+.profile-downloads {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    padding-top: 10px;
+}
+
+.download-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    padding: 12px 24px;
+    background-color: #111111;
+    color: #ffffff;
+    text-decoration: none;
+    font-size: 14px;
+    border-radius: 4px;
+    transition: background-color 0.3s ease;
+}
+
+.download-btn:hover {
+    background-color: #444444;
+}
+
+.download-hint {
+    font-size: 12px;
+    color: #999999;
+    margin-top: 8px;
+}
+
+@media (max-width: 768px) {
+    .profile-container {
+        flex-direction: column;
+        gap: 30px;
+    }
+    .profile-downloads {
+        width: 100%;
+    }
+    .download-btn {
+        width: 100%;
+        justify-content: center;
+    }
+}
+</style>
 
         </div>
 
