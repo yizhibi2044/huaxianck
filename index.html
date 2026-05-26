@@ -14,76 +14,7 @@
     box-sizing: border-box;
     margin-bottom: 20px;  /* 跟大图保持一点高级的上下距离 */
 }
-        /* 日常动态专用全屏页面样式 */
-.full-screen-page {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: #ffffff; /* 纯白背景，烘托艺术作品 */
-    z-index: 10000;
-    opacity: 0;
-    pointer-events: none;
-    transition: opacity 0.3s ease;
-    overflow-y: auto; /* 内容多了可以垂直滚动 */
-}
-.full-screen-page.active {
-    opacity: 1;
-    pointer-events: auto;
-}
-.page-container {
-    max-width: 1000px;
-    margin: 60px auto;
-    padding: 0 40px;
-    font-family: sans-serif;
-    position: relative;
-    text-align: left; /* 控制整个页面内的所有文字左对齐 */
-}
-.page-close {
-    position: absolute;
-    top: -20px;
-    right: 20px;
-    font-size: 35px;
-    color: #999999;
-    cursor: pointer;
-    line-height: 1;
-}
-.page-close:hover { color: #111111; }
-.page-title {
-    font-size: 28px;
-    font-weight: 600;
-    margin-top: 0;
-    margin-bottom: 10px;
-    letter-spacing: 1px;
-}
-.page-subtitle {
-    font-size: 15px;
-    color: #666666;
-    line-height: 1.6;
-    margin-bottom: 40px;
-    padding-bottom: 20px;
-    border-bottom: 1px solid #eee;
-}
-.updates-list { margin-top: 20px; }
-.update-item {
-    margin-bottom: 25px;
-    border-bottom: 1px dashed #eee;
-    padding-bottom: 15px;
-    text-align: left; /* 动态条目严格左对齐 */
-}
-.update-date {
-    font-size: 13px;
-    color: #999;
-    display: block;
-    margin-bottom: 5px;
-}
-.update-text {
-    margin: 0;
-    font-size: 15px;
-    line-height: 1.6;
-    color: #333;
-}
+    
     /* 小图下方文字的独立样式 */
 .thumb-title {
     text-align: left;      /* 👈 核心：控制文字严格左对齐 */
