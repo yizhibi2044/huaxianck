@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>大型创作 - 杜华显</title>
+    <style>
+        body {
+            font-family: "PingFang SC", "Microsoft YaHei", Arial, sans-serif;
+            background: #f8f8f8;
+            margin: 0;
+            padding: 40px 20px;
+            line-height: 1.7;
+        }
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            background: white;
+            padding: 40px;
+            border-radius: 12px;
+            box-shadow: 0 8px 30px rgba(0,0,0,0.08);
+        }
+        h1 {
+            text-align: center;
+            margin-bottom: 50px;
+            color: #222;
+            font-size: 32px;
+        }
+        .back-btn {
+            display: inline-block;
+            margin-bottom: 30px;
+            padding: 10px 20px;
+            background: #222;
+            color: white;
+            text-decoration: none;
+            border-radius: 6px;
+            font-size: 15px;
+        }
+        .back-btn:hover { background: #444; }
+
+        /* ⚡ 自动计数器 */
+        .timeline {
+            position: relative;
+            padding-left: 45px; 
+            counter-reset: my-counter; 
+        }
+        
+        .event {
+            position: relative;
+            margin-bottom: 40px;
+        }
+        
+        .event-date {
+            position: absolute;
+            left: -45px;
+            top: 0;
+            width: 35px;
+            text-align: left;
+            color: #222;
+            font-size: 24px;
+            font-weight: bold;
+            line-height: 1;
+            font-family: "Georgia", Times, serif;
+        }
+        .event-date::before {
+            counter-increment: my-counter;
+            content: counter(my-counter);
+        }
+        
+        .event-content {
+            background: #fff;
+            padding: 20px 25px;
+            border-radius: 10px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.04);
+            border: 1px solid #eee;
+        }
+        
+        .event-content img {
+            max-width: 100%;
+            max-height: 650px;        /* ⚡ 针对大型创作调高了最大高度，展现大画细节 */
+            object-fit: contain;      /* 确保油画作品绝不扭曲变形 */
+            border-radius: 6px;       
+            margin-top: 15px;         
+            display: block;
+        }
+        
+        .event-content h3 {
+            margin: 0 0 12px 0;
+            color: #222;
+            font-size: 20px;
+        }
+        .event-content p {
+            color: #555;
+            margin: 0;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <a href="index.html" class="back-btn">← 返回首页</a>
+        <h1>大型创作 Major Production</h1>
+        
+        <div class="timeline">
+
+            <div class="event">
+                <div class="event-date"></div> 
+                <div class="event-content">
+                    <h3>《渔歌朝晖迎华诞》</h3>
+                    <p>作品说明：204×140cm，布面油画。入选第十四届全国美术作品展览油画展区。</p>
+                    <img src="yumin11.jpg" alt="渔歌朝晖迎华诞">
+                </div>
+            </div>
+            
+            <div class="event">
+                <div class="event-date"></div> 
+                <div class="event-content">
+                    <h3>《渔歌朝晖迎华诞之二》</h3>
+                    <p>作品说明：布面油画。入选第十届中国北京国际美术双年展主题展。</p>
+                    <img src="yujia3.jpg" alt="渔歌朝晖迎华诞之二">
+                </div>
+            </div>
+
+            <div class="event">
+                <div class="event-date"></div> 
+                <div class="event-content">
+                    <h3>《时代颂歌——幸福生活之二》</h3>
+                    <p>作品说明：布面油画。入选2022中国百家金陵画展。</p>
+                    <img src="yujia1.jpg" alt="幸福生活之二">
+                </div>
+            </div>
+
+            </div>
+    </div>
+</body>
+</html>
