@@ -38,10 +38,11 @@
         }
         .back-btn:hover { background: #444; }
 
-        /* ⚡ 核心改动：移除了左侧的灰色时间轴线条 */
+        /* ⚡ 开启全自动计数器 */
         .timeline {
             position: relative;
-            padding-left: 45px; /* 为左侧数字留出空间 */
+            padding-left: 45px; 
+            counter-reset: my-counter; /* 初始化计数器 */
         }
         
         .event {
@@ -49,7 +50,7 @@
             margin-bottom: 40px;
         }
         
-        /* ⚡ 核心改动：把黑色日期块改成了高级、大气的阿拉伯数字序号 */
+        /* ⚡ 让浏览器自己计算并显示数字序号 */
         .event-date {
             position: absolute;
             left: -45px;
@@ -60,7 +61,12 @@
             font-size: 24px;
             font-weight: bold;
             line-height: 1;
-            font-family: "Georgia", Times, serif; /* 优雅的衬线体数字 */
+            font-family: "Georgia", Times, serif;
+        }
+        /* 核心逻辑：每出现一个 event 块，数字自动加 1 */
+        .event-date::before {
+            counter-increment: my-counter;
+            content: counter(my-counter);
         }
         
         .event-content {
@@ -68,12 +74,13 @@
             padding: 20px 25px;
             border-radius: 10px;
             box-shadow: 0 4px 15px rgba(0,0,0,0.04);
-            border: 1px solid #eee; /* 加一层淡淡的边框，让卡片更精致 */
+            border: 1px solid #eee;
         }
         .event-content img {
             max-width: 100%;
             border-radius: 8px;
             margin: 15px 0;
+            display: block;
         }
         .event-content h3 {
             margin: 0 0 12px 0;
@@ -94,7 +101,15 @@
         <div class="timeline">
 
             <div class="event">
-                <div class="event-date">1</div>
+                <div class="event-date"></div> 
+                <div class="event-content">
+                    <h3>新动态标题（比如：北京工作室新创作）</h3>
+                    <p>这里写今天的新内容。如果要在卡片里加图片，就在这行字上面加一行图片代码即可。</p>
+                </div>
+            </div>
+
+            <div class="event">
+                <div class="event-date"></div>
                 <div class="event-content">
                     <h3>工作室创作</h3>
                     <p>今天继续《渔港晨光》系列的第5张，重点研究渔网在晨光下的透明感和色彩变化。</p>
@@ -102,7 +117,7 @@
             </div>
 
             <div class="event">
-                <div class="event-date">2</div>
+                <div class="event-date"></div>
                 <div class="event-content">
                     <h3>威海写生</h3>
                     <p>上午去刘公岛附近写生，海风很大，但光线特别漂亮，画了三张小色稿。</p>
@@ -110,7 +125,7 @@
             </div>
 
             <div class="event">
-                <div class="event-date">3</div>
+                <div class="event-date"></div>
                 <div class="event-content">
                     <h3>参加公益活动</h3>
                     <p>下午去当地学校给孩子们做油画分享讲座，反响很好。</p>
@@ -118,7 +133,7 @@
             </div>
 
             <div class="event">
-                <div class="event-date">4</div>
+                <div class="event-date"></div>
                 <div class="event-content">
                     <h3>新作品完成</h3>
                     <p>《渔家系列之十二》正式完成，尺寸 100×120cm。</p>
