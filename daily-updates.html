@@ -76,12 +76,17 @@
             box-shadow: 0 4px 15px rgba(0,0,0,0.04);
             border: 1px solid #eee;
         }
+        
+        /* 🎨 针对图片进行的画廊艺术级微调 */
         .event-content img {
             max-width: 100%;
-            border-radius: 8px;
-            margin: 15px 0;
+            max-height: 500px;        /* ⚡ 核心：控制图片在网页中绝不拉得过长 */
+            object-fit: contain;      /* ⚡ 核心：等比例缩放，油画绝对不扭曲变形 */
+            border-radius: 6px;       /* 柔和的微圆角 */
+            margin-top: 15px;         /* 与上方文字保持呼吸空隙 */
             display: block;
         }
+        
         .event-content h3 {
             margin: 0 0 12px 0;
             color: #222;
@@ -105,6 +110,7 @@
                 <div class="event-content">
                     <h3>2000年</h3>
                     <p>《农业知识》2000年12期版式山东省专业报刊新闻奖三等奖</p>
+                    <img src="tu1.jpg" alt="2000年作品/证书">
                 </div>
             </div>
             
@@ -113,6 +119,7 @@
                 <div class="event-content">
                     <h3>1999年</h3>
                     <p>油画作品在山东省两代人书画摄影大赛中获得三等奖。</p>
+                    <img src="tu2.jpg" alt="1999年作品">
                 </div>
             </div>
 
@@ -121,6 +128,7 @@
                 <div class="event-content">
                     <h3>1999年</h3>
                     <p>《女人体》《油画风景》参加学院优秀学生汇报展。</p>
+                    <img src="tu3.jpg" alt="1999年汇报展作品">
                 </div>
             </div>
 
@@ -129,6 +137,7 @@
                 <div class="event-content">
                     <h3>成绩</h3>
                     <p>1998年油画作品《追寻》在庆祝改革开放二十周年美术作品展获三等奖</p>
+                    <img src="tu4.jpg" alt="追寻">
                 </div>
             </div>
 
@@ -137,6 +146,7 @@
                 <div class="event-content">
                     <h3>1997</h3>
                     <p>年在美术系素描大赛二等奖</p>
+                    <img src="tu5.jpg" alt="1997年素描作品">
                 </div>
             </div>
 
@@ -145,6 +155,7 @@
                 <div class="event-content">
                     <h3>1996 山东艺术学院 油画第一工作室</h3>
                     <p>油画第一工作室 系统学习。</p>
+                    <img src="tu6.jpg" alt="工作室学习生活">
                 </div>
             </div>
 
