@@ -278,8 +278,8 @@
             
             <div class="grid-four-columns">
     
-    <div class="thumb-image-box">
-        <img src="nangua.jpg">
+   <div class="thumb-image-box" id="updatesTrigger" style="cursor: pointer;">
+        <img src="duhuaixanbenren.jpg">
         <p class="thumb-title">Daily Updates <br> 日常动态2026年</p>
     </div>
     
@@ -431,7 +431,60 @@ July 2024: Du Huaxian’s *Fishermen’s Songs and Morning Glow Celebrate the Na
                 modal.classList.remove('active');
             }
         });
+        // ⚡ 日常动态弹窗控制逻辑 ⚡
+        const updatesTrigger = document.getElementById('updatesTrigger');
+        const updatesModal = document.getElementById('updatesModal');
+        const updatesClose = document.getElementById('updatesClose');
+
+        // 点击第一个小图盒子，打开动态列表
+        updatesTrigger.addEventListener('click', function() {
+            updatesModal.classList.add('active');
+        });
+
+        // 点击 X 关闭
+        updatesClose.addEventListener('click', function() {
+            updatesModal.classList.remove('active');
+        });
+
+        // 点击弹窗黑色背景关闭
+        updatesModal.addEventListener('click', function(e) {
+            if (e.target === updatesModal) {
+                updatesModal.classList.remove('active');
+            }
+        });
     </script>
+        <div class="modal-overlay" id="updatesModal">
+    <div class="modal-content" style="max-width: 600px; text-align: left; padding: 30px;">
+        <span class="modal-close" id="updatesClose" style="color: #111; top: 15px; right: 20px;">&times;</span>
+        
+        <h2 style="font-size: 24px; margin-top: 0; margin-bottom: 20px; border-bottom: 1px solid #eee; padding-bottom: 10px; font-family: sans-serif;">Daily Updates / 日常动态</h2>
+        
+        <div style="max-height: 60vh; overflow-y: auto; padding-right: 10px;">
+            
+            <div style="margin-bottom: 25px; border-bottom: 1px dashed #eee; padding-bottom: 15px;">
+                <span style="font-size: 13px; color: #999; display: block; margin-bottom: 5px;">2026年5月</span>
+                <p style="margin: 0; font-size: 15px; line-height: 1.6; color: #333;">
+                    筹备参加今年10月的美国芝加哥艺术博览会（Artexpo Chicago），目前官方个人网站搭建完成并正式上线，正在进行作品档案的数字化整理与画册PDF的设计。
+                </p>
+            </div>
+
+            <div style="margin-bottom: 25px; border-bottom: 1px dashed #eee; padding-bottom: 15px;">
+                <span style="font-size: 13px; color: #999; display: block; margin-bottom: 5px;">2026年3月</span>
+                <p style="margin: 0; font-size: 15px; line-height: 1.6; color: #333;">
+                    油画作品《渔歌朝晖迎华诞之二》在第十届中国北京国际美术双年展（北京展览馆）展出，现场与多位写意油画流派的艺术家及老友进行了深入的学术交流。
+                </p>
+            </div>
+
+            <div style="margin-bottom: 25px; border-bottom: 1px dashed #eee; padding-bottom: 15px;">
+                <span style="font-size: 13px; color: #999; display: block; margin-bottom: 5px;">2026年2月</span>
+                <p style="margin: 0; font-size: 15px; line-height: 1.6; color: #333;">
+                    开启全新写生创作项目，计划进行为期两年的长途旅行写生。首站前往风景独特的地貌区域进行plein air（户外写生）创作，捕捉自然光影与粗犷的点线面语汇。
+                </p>
+            </div>
+
+        </div>
+    </div>
+</div>
 </body>
 </html>
 </div>
