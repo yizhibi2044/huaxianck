@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>风景写生作品 - 杜华显</title>
+    <style>
+        body {
+            font-family: "PingFang SC", "Microsoft YaHei", Arial, sans-serif;
+            background: #f8f8f8;
+            margin: 0;
+            padding: 40px 20px;
+            line-height: 1.7;
+        }
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            background: white;
+            padding: 40px;
+            border-radius: 12px;
+            box-shadow: 0 8px 30px rgba(0,0,0,0.08);
+        }
+        h1 {
+            text-align: center;
+            margin-bottom: 50px;
+            color: #222;
+            font-size: 32px;
+        }
+        .back-btn {
+            display: inline-block;
+            margin-bottom: 30px;
+            padding: 10px 20px;
+            background: #222;
+            color: white;
+            text-decoration: none;
+            border-radius: 6px;
+            font-size: 15px;
+        }
+        .back-btn:hover { background: #444; }
+
+        /* ⚡ 自动计数器 */
+        .timeline {
+            position: relative;
+            padding-left: 45px; 
+            counter-reset: my-counter; 
+        }
+        
+        .event {
+            position: relative;
+            margin-bottom: 40px;
+        }
+        
+        .event-date {
+            position: absolute;
+            left: -45px;
+            top: 0;
+            width: 35px;
+            text-align: left;
+            color: #222;
+            font-size: 24px;
+            font-weight: bold;
+            line-height: 1;
+            font-family: "Georgia", Times, serif;
+        }
+        .event-date::before {
+            counter-increment: my-counter;
+            content: counter(my-counter);
+        }
+        
+        .event-content {
+            background: #fff;
+            padding: 20px 25px;
+            border-radius: 10px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.04);
+            border: 1px solid #eee;
+        }
+        
+        .event-content img {
+            max-width: 100%;
+            max-height: 550px;        /* 限制写生作品图的最大高度 */
+            object-fit: contain;      /* 确保油画作品绝不扭曲变形 */
+            border-radius: 6px;       
+            margin-top: 15px;         
+            display: block;
+        }
+        
+        .event-content h3 {
+            margin: 0 0 12px 0;
+            color: #222;
+            font-size: 20px;
+        }
+        .event-content p {
+            color: #555;
+            margin: 0;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <a href="index.html" class="back-btn">← 返回首页</a>
+        <h1>风景写生作品 Landscape Sketching</h1>
+        
+        <div class="timeline">
+
+            <div class="event">
+                <div class="event-date"></div> 
+                <div class="event-content">
+                    <h3>威海写生作品</h3>
+                    <p>作品说明：写生于刘公岛附近，布面油画。</p>
+                    <img src="fengjing1.jpg" alt="写生作品">
+                </div>
+            </div>
+            
+            <div class="event">
+                <div class="event-date"></div> 
+                <div class="event-content">
+                    <h3>张家界写生系列</h3>
+                    <p>作品说明：捕捉自然山石的点线面形式语言， bold 块面与色彩表现。</p>
+                    <img src="fengjing2.jpg" alt="写生作品">
+                </div>
+            </div>
+
+            </div>
+    </div>
+</body>
+</html>
