@@ -14,6 +14,11 @@
     box-sizing: border-box;
     margin-bottom: 20px;  /* 跟大图保持一点高级的上下距离 */
 }
+        .gallery-container {
+    padding-left: 20px;   /* 👈 核心：左边留出 1.5 厘米白边 */
+    padding-right: 20px;  /* 👉 核心：右边留出 1.5 厘米白边 */
+    box-sizing: border-box; /* ⚡ 关键：保证加了边距后大图和小图不会错位变形 */
+}
         .carousel-container {
             width: 100%;
             overflow: hidden;
@@ -238,6 +243,7 @@
             <p class="subtitle">dhx1974@gmail.com, Under development.</p>
         </header>
 
+        <div style="padding-left: 20px; padding-right: 20px; box-sizing: border-box;">
         <div class="gallery-container">
             
             <div class="carousel-container">
@@ -409,3 +415,4 @@ July 2024: Du Huaxian’s *Fishermen’s Songs and Morning Glow Celebrate the Na
     </script>
 </body>
 </html>
+</div>
