@@ -278,32 +278,69 @@
             
             <div class="grid-four-columns">
     
-  <div class="grid-four-columns">
+<div class="grid-four-columns">
     
-    <div class="thumb-image-box" id="updatesTrigger" style="cursor: pointer; text-align: left;">
+    <div class="thumb-image-box" id="updatesTrigger" style="cursor: pointer;">
         <img src="duhuaixanbenren.jpg">
-        <div style="margin-top: 8px;">
-            <p class="thumb-title" style="margin: 0;">Daily Updates <br> 日常动态2026年</p>
-            <p style="font-size: 12px; color: #999; margin: 4px 0 0 0; font-family: sans-serif;">(Double-click to open / 双击打开)</p>
-        </div>
+        <p class="thumb-title">Daily Updates <br> 日常动态2026年</p>
+        <p class="thumb-hint">(Double-click to open / 双击打开)</p>
     </div>
     
-    <div class="thumb-image-box" style="text-align: left;">
+    <div class="thumb-image-box">
         <img src="gongyi1.jpg">
         <p class="thumb-title">Landscape Sketching <br> 风景写生作品</p>
     </div>
     
-    <div class="thumb-image-box" style="text-align: left;">
+    <div class="thumb-image-box">
         <img src="lvshu.jpg">
         <p class="thumb-title">Major Production <br> 大型创作</p>
     </div>
     
-    <div class="thumb-image-box" style="text-align: left;">
+    <div class="thumb-image-box">
         <img src="yumin11.jpg">
         <p class="thumb-title">Charity Event <br>公益活动</p>
     </div>
 
 </div>
+
+<style>
+    .grid-four-columns {
+        display: grid !important;
+        grid-template-columns: repeat(4, 1fr) !important; /* 核心：强制平分四列 */
+        gap: 20px !important; /* 盒子之间的间距 */
+        width: 100% !important;
+        margin-top: 40px !important;
+        margin-bottom: 40px !important;
+        box-sizing: border-box !important;
+    }
+    .thumb-image-box {
+        width: 100% !important;
+        text-align: left !important; /* 严格左对齐 */
+        display: flex !important;
+        flex-direction: column !important;
+    }
+    .thumb-image-box img {
+        width: 100% !important;
+        height: 280px !important; /* 限制小图高度，防止拉伸变形 */
+        object-fit: cover !important;
+        border-radius: 2px;
+    }
+    .thumb-title {
+        text-align: left !important;
+        font-size: 14px !important;
+        color: #111111 !important;
+        line-height: 1.5 !important;
+        margin: 10px 0 0 0 !important;
+        font-family: sans-serif;
+    }
+    .thumb-hint {
+        text-align: left !important;
+        font-size: 11px !important;
+        color: #999999 !important;
+        margin: 4px 0 0 0 !important;
+        font-family: sans-serif;
+    }
+</style>
 
 <section class="artist-profile-section">
     <div class="profile-container">
@@ -404,7 +441,7 @@ July 2024: Du Huaxian’s *Fishermen’s Songs and Morning Glow Celebrate the Na
             <div style="margin-bottom: 25px; border-bottom: 1px dashed #eee; padding-bottom: 15px; text-align: left;">
                 <span style="font-size: 13px; color: #999; display: block; margin-bottom: 5px;">2026年5月</span>
                 <p style="margin: 0; font-size: 15px; line-height: 1.6; color: #333; text-align: left;">
-                    筹备参加今年10月的美国芝加哥艺术博览会（Artexpo Chicago），目前官方个人网站搭建完成并正式上线，正在进行作品档案的数字化整理与画册PDF的设计。
+                    筹备参加今年10月的美国芝加哥艺术博览会（Artexpo Chicago），目前官方个人网站搭建完成并正式上线，正在进行作品档案 of 的数字化整理与画册PDF的设计。
                 </p>
             </div>
 
@@ -434,11 +471,10 @@ July 2024: Du Huaxian’s *Fishermen’s Songs and Morning Glow Celebrate the Na
     const infoTitle = document.getElementById('infoTitle');
     const infoDetails = document.getElementById('infoDetails');
 
-    // 监听上方无缝轮播大图的单次点击（单击放大）
+    // 大图单击放大
     track.addEventListener('click', function(e) {
         if (e.target.tagName === 'IMG') {
             const img = e.target;
-            
             const title = img.getAttribute('data-title') || '未题名';
             const size = img.getAttribute('data-size') || '尺寸未注明';
             const year = img.getAttribute('data-year') || '年代未知';
@@ -451,26 +487,22 @@ July 2024: Du Huaxian’s *Fishermen’s Songs and Morning Glow Celebrate the Na
         }
     });
 
-    // 关闭大图弹窗
     modalClose.addEventListener('click', function() { modal.classList.remove('active'); });
     modal.addEventListener('click', function(e) { if (e.target === modal) { modal.classList.remove('active'); } });
 
-    // ⚡ 日常动态弹窗逻辑：改成标准的“双击”(dblclick) 触发 ⚡
+    // 日常动态双击触发
     const updatesTrigger = document.getElementById('updatesTrigger');
     const updatesModal = document.getElementById('updatesModal');
     const updatesClose = document.getElementById('updatesClose');
 
-    // 双击第一个小图盒子，打开动态列表
     updatesTrigger.addEventListener('dblclick', function() {
         updatesModal.classList.add('active');
     });
 
-    // 点击 X 关闭动态
     updatesClose.addEventListener('click', function() {
         updatesModal.classList.remove('active');
     });
 
-    // 点击弹窗黑色背景关闭动态
     updatesModal.addEventListener('click', function(e) {
         if (e.target === updatesModal) {
             updatesModal.classList.remove('active');
