@@ -8,27 +8,21 @@
     <meta name="keywords" content="杜华显, 杜华显油画, 杜华显个人网站，杜华显官网, 中国美协会员杜华显, 杜华显当代油画, 杜华显作品 杜华显油画">
     
     <style>
+        /* 页面大总管及顶部导航 */
         header {
-    padding-left: 40px;   /* 👈 左边缩进 1.5 厘米 */
-    padding-right: 20px;  /* 👉 右边缩进 1.5 厘米 */
-    box-sizing: border-box;
-    margin-bottom: 20px;  /* 跟大图保持一点高级的上下距离 */
-}
-    /* 小图下方文字的独立样式 */
-.thumb-title {
-    text-align: left;      /* 👈 核心：控制文字严格左对齐 */
-    font-size: 14px;       /* 字体大小，精致不抢戏 */
-    color: #444444;        /* 深灰色，比纯黑更儒雅 */
-    line-height: 1.5;      /* 行高，防止多行字叠在一起 */
-    margin-top: 8px;       /* 字和上面图片之间的微调距离 */
-    margin-bottom: 0;
-    font-family: "PingFang SC", "Microsoft YaHei", sans-serif;
-}
+            padding-left: 20px;
+            padding-right: 20px;
+            box-sizing: border-box;
+            margin-bottom: 20px;
+        }
+
         .gallery-container {
-    padding-left: 20px;   /* 👈 核心：左边留出 1.5 厘米白边 */
-    padding-right: 20px;  /* 👉 核心：右边留出 1.5 厘米白边 */
-    box-sizing: border-box; /* ⚡ 关键：保证加了边距后大图和小图不会错位变形 */
-}
+            padding-left: 20px;
+            padding-right: 20px;
+            box-sizing: border-box;
+        }
+
+        /* 顶部大图轮播机制 */
         .carousel-container {
             width: 100%;
             overflow: hidden;
@@ -44,7 +38,7 @@
 
         .carousel-container:hover .carousel-track {
             animation-play-state: paused;
-            cursor: pointer; /* 鼠标变成手型，提示可以点击 */
+            cursor: pointer;
         }
 
         .carousel-slide {
@@ -55,7 +49,7 @@
 
         .carousel-slide img {
             width: 100%;
-            height: auto; /* ⚡ 修复：之前这里写成了冒号 : */
+            height: auto;
             object-fit: cover;
         }
 
@@ -64,27 +58,56 @@
             100% { transform: translateX(-94.1%); }
         }
 
+        /* ⚡ 核心修复：完美的横向 4 列平铺网格系统，彻底告别挤压 ⚡ */
         .grid-four-columns {
-            display: grid;
-            grid-template-columns: repeat(4, 1fr);
-            gap: 10px;
-            margin-top: 30px;
+            display: grid !important;
+            grid-template-columns: repeat(4, 1fr) !important; /* 均匀平分4列 */
+            gap: 20px !important; /* 盒子之间的间距 */
+            width: 100% !important;
+            margin-top: 40px !important;
+            margin-bottom: 40px !important;
+            box-sizing: border-box !important;
+        }
+
+        .thumb-image-box {
+            width: 100% !important;
+            text-align: left !important;
+            display: flex !important;
+            flex-direction: column !important;
         }
 
         .thumb-image-box img {
-            width: 100%;
-            height: 300px;
-            object-fit: cover;
+            width: 100% !important;
+            height: 280px !important; /* 锁定小图的高雅艺术高度比例 */
+            object-fit: cover !important;
+            border-radius: 2px;
         }
 
-        /* 弹窗遮罩背景 */
+        .thumb-title {
+            text-align: left !important;
+            font-size: 14px !important;
+            color: #111111 !important;
+            line-height: 1.5 !important;
+            margin: 10px 0 0 0 !important;
+            font-family: "PingFang SC", "Microsoft YaHei", sans-serif;
+        }
+
+        .thumb-hint {
+            text-align: left !important;
+            font-size: 11px !important;
+            color: #999999 !important;
+            margin: 4px 0 0 0 !important;
+            font-family: sans-serif;
+        }
+
+        /* 弹窗遮罩背景基础皮 */
         .modal-overlay {
             position: fixed;
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
-            background: rgba(0, 0, 0, 0.9); /* 纯黑半透明，烘托油画色彩 */
+            background: rgba(0, 0, 0, 0.9);
             display: flex;
             justify-content: center;
             align-items: center;
@@ -94,13 +117,11 @@
             transition: opacity 0.3s ease;
         }
 
-        /* 弹窗激活时的状态 */
         .modal-overlay.active {
             opacity: 1;
             pointer-events: auto;
         }
 
-        /* 弹窗内容包裹盒 */
         .modal-content {
             background: #fff;
             padding: 24px;
@@ -111,16 +132,14 @@
             box-shadow: 0 20px 40px rgba(0,0,0,0.6);
         }
 
-        /* 弹出的大图样式 */
         .modal-img {
             max-width: 100%;
-            max-height: 70vh; /* 确保图片不会超出屏幕高度 */
+            max-height: 70vh;
             object-fit: contain;
             display: block;
             margin: 0 auto;
         }
 
-        /* 作品信息文字布局 */
         .modal-info {
             margin-top: 15px;
             font-family: "PingFang SC", "Microsoft YaHei", sans-serif;
@@ -138,7 +157,6 @@
             color: #666;
         }
 
-        /* 关闭按钮 */
         .modal-close {
             position: absolute;
             top: -40px;
@@ -159,7 +177,7 @@
             background-color: #ffffff;
             font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
             color: #333333;
-            margin-top: 40px; /* 让它跟上面的四个小图保持一点高级的留白空间 */
+            margin-top: 40px;
         }
 
         .profile-container {
@@ -195,7 +213,7 @@
             color: #444444;
             margin-bottom: 15px;
             text-align: justify;
-            white-space: pre-line; /* 保持原有的换行格式 */
+            white-space: pre-line;
         }
 
         .profile-downloads {
@@ -253,7 +271,6 @@
             <p class="subtitle">dhx1974@gmail.com, Under development.</p>
         </header>
 
-        <div style="padding-left: 20px; padding-right: 20px; box-sizing: border-box;">
         <div class="gallery-container">
             
             <div class="carousel-container">
@@ -267,7 +284,7 @@
                     <div class="carousel-slide"><img src="yujia8.jpg" data-title="渔家系列之八" data-size="100x120cm" data-year="2025"></div>
                     <div class="carousel-slide"><img src="yujia10.jpg" data-title="渔家系列之十" data-size="100x120cm" data-year="2025"></div>
                     <div class="carousel-slide"><img src="yujia9.jpg" data-title="渔家系列之九" data-size="100x120cm" data-year="2025"></div>
-                   <div class="carousel-slide"><img src="hehua2.jpg" data-title="荷花系列之二" data-size="60x60cm" data-year="2026"></div>
+                    <div class="carousel-slide"><img src="hehua2.jpg" data-title="荷花系列之二" data-size="60x60cm" data-year="2026"></div>
                     <div class="carousel-slide"><img src="hehua3.jpg" data-title="荷花系列之三" data-size="60x60cm" data-year="2026"></div>
                     <div class="carousel-slide"><img src="hehua4.jpg" data-title="荷花系列之四" data-size="60x60cm" data-year="2026"></div>
                     <div class="carousel-slide"><img src="hehua5.jpg" data-title="荷花系列之五" data-size="60x60cm" data-year="2026"></div>
@@ -277,80 +294,39 @@
             </div>
             
             <div class="grid-four-columns">
-    
-<div class="grid-four-columns">
-    
-    <div class="thumb-image-box" id="updatesTrigger" style="cursor: pointer;">
-        <img src="duhuaixanbenren.jpg">
-        <p class="thumb-title">Daily Updates <br> 日常动态2026年</p>
-        <p class="thumb-hint">(Double-click to open / 双击打开)</p>
-    </div>
-    
-    <div class="thumb-image-box">
-        <img src="gongyi1.jpg">
-        <p class="thumb-title">Landscape Sketching <br> 风景写生作品</p>
-    </div>
-    
-    <div class="thumb-image-box">
-        <img src="lvshu.jpg">
-        <p class="thumb-title">Major Production <br> 大型创作</p>
-    </div>
-    
-    <div class="thumb-image-box">
-        <img src="yumin11.jpg">
-        <p class="thumb-title">Charity Event <br>公益活动</p>
-    </div>
+                
+                <div class="thumb-image-box" id="updatesTrigger" style="cursor: pointer;">
+                    <img src="duhuaixanbenren.jpg">
+                    <p class="thumb-title">Daily Updates <br> 日常动态2026年</p>
+                    <p class="thumb-hint">(Double-click to open / 双击打开)</p>
+                </div>
+                
+                <div class="thumb-image-box">
+                    <img src="gongyi1.jpg">
+                    <p class="thumb-title">Landscape Sketching <br> 风景写生作品</p>
+                </div>
+                
+                <div class="thumb-image-box">
+                    <img src="lvshu.jpg">
+                    <p class="thumb-title">Major Production <br> 大型创作</p>
+                </div>
+                
+                <div class="thumb-image-box">
+                    <img src="yumin11.jpg">
+                    <p class="thumb-title">Charity Event <br>公益活动</p>
+                </div>
 
-</div>
+            </div>
 
-<style>
-    .grid-four-columns {
-        display: grid !important;
-        grid-template-columns: repeat(4, 1fr) !important; /* 核心：强制平分四列 */
-        gap: 20px !important; /* 盒子之间的间距 */
-        width: 100% !important;
-        margin-top: 40px !important;
-        margin-bottom: 40px !important;
-        box-sizing: border-box !important;
-    }
-    .thumb-image-box {
-        width: 100% !important;
-        text-align: left !important; /* 严格左对齐 */
-        display: flex !important;
-        flex-direction: column !important;
-    }
-    .thumb-image-box img {
-        width: 100% !important;
-        height: 280px !important; /* 限制小图高度，防止拉伸变形 */
-        object-fit: cover !important;
-        border-radius: 2px;
-    }
-    .thumb-title {
-        text-align: left !important;
-        font-size: 14px !important;
-        color: #111111 !important;
-        line-height: 1.5 !important;
-        margin: 10px 0 0 0 !important;
-        font-family: sans-serif;
-    }
-    .thumb-hint {
-        text-align: left !important;
-        font-size: 11px !important;
-        color: #999999 !important;
-        margin: 4px 0 0 0 !important;
-        font-family: sans-serif;
-    }
-</style>
-
-<section class="artist-profile-section">
-    <div class="profile-container">
-        
-        <div class="profile-text">
-            <h2 class="profile-title">杜华显 (Huaxian Du)</h2>
-            <p class="profile-subtitle">Member of the China Artists Association / Professional Oil Painter<br>中国美术家协会会员 / 职业油画家</p>
-            
-            <div class="profile-bio">
-                <p>Du Huaxian
+            <section class="artist-profile-section">
+                <div class="profile-container">
+                    
+                    <div class="profile-text">
+                        <h2 class="profile-title">杜华显 (Huaxian Du)</h2>
+                        <p class="profile-subtitle">Member of the China Artists Association / Professional Oil Painter<br>中国美术家协会会员 / 职业油画家</p>
+                        
+                        <div class="profile-bio">
+                            <p>Du Huaxian
 From Weihai, Shandong
 Member of the China Artists Association
 Special Artist at the Beijing Academy of Contemporary Chinese Expressive Oil Painting
@@ -389,125 +365,4 @@ July 2024: Du Huaxian’s *Fishermen’s Songs and Morning Glow Celebrate the Na
 2023年《夜色渔港之私》大美边疆——第五届中国民族美术双年展（中国美术家协会)
 2022年《夜色渔港之十》2022全国少数民族美术作品展（中国美术家协会)
 2023年《幸福生活之一》第三届“香凝如故”全国美术作品展（中国美术家协会)
-2018年《情系威海》入选“逐梦·威海卫”2018全国风景、静物油画作品展（中国美术家协会)
-
-二、省级展览部分
-2025.10 《大运之荷》入选2025“北京意象·活力通州” 入选并在中国美术馆展出（北京美术家协会）
-2025年《福海》第五届新疆油画展
-2024年《渔获》入选北京美协第二十一届新人新作展
-2023年作品参加北京艺术博览会
-2023年《荣祥广场一角》入选“北京意象·多彩顺义”大型美术创作活动并在中国美术馆展出（北京美术家协会）
-2019年作品《姑射 猕猴桃谷》入选北京意象昌平大型美术创作并在中国美术馆展出（北京美术家协会）
-2018年作品《夜色》入选北京意象 诗话海淀大型美术创作并在中国美术馆展出（北京美术家协会）
-2018年，2019年作品入选得境取象东亿中国油画展
-2018年《正午高原》入选第七届高原展并获优秀奖</p>
-            </div>
-        </div>
-
-        <div class="profile-downloads">
-            <a href="./du-huaxian-portfolio.pdf" target="_blank" class="download-btn">
-                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v4M7 10l5 5 5-5M12 15V3"/></svg>
-                下载艺术作品集 (Download Portfolio PDF)
-            </a>
-            <p class="download-hint">提示：点击可直接在线浏览或下载完整版 PDF 作品集</p>
-        </div>
-
-    </div>
-</section>
-
-</div> </div> <footer>
-    <p>© 2026 Minimalism Grid. All rights reserved.</p>
-</footer>
-
-<div class="modal-overlay" id="imageModal">
-    <div class="modal-content">
-        <span class="modal-close" id="modalClose">&times;</span>
-        <img src="" alt="作品放大图" class="modal-img" id="modalImg">
-        <div class="modal-info">
-            <h3 id="infoTitle">作品名称</h3>
-            <p id="infoDetails">尺寸 / 年代</p>
-        </div>
-    </div>
-</div>
-
-<div class="modal-overlay" id="updatesModal">
-    <div class="modal-content" style="max-width: 600px; text-align: left; padding: 30px;">
-        <span class="modal-close" id="updatesClose" style="color: #111; top: 15px; right: 20px;">&times;</span>
-        
-        <h2 style="font-size: 24px; margin-top: 0; margin-bottom: 20px; border-bottom: 1px solid #eee; padding-bottom: 10px; font-family: sans-serif; text-align: left;">Daily Updates / 日常动态</h2>
-        
-        <div style="max-height: 60vh; overflow-y: auto; padding-right: 10px; text-align: left;">
-            
-            <div style="margin-bottom: 25px; border-bottom: 1px dashed #eee; padding-bottom: 15px; text-align: left;">
-                <span style="font-size: 13px; color: #999; display: block; margin-bottom: 5px;">2026年5月</span>
-                <p style="margin: 0; font-size: 15px; line-height: 1.6; color: #333; text-align: left;">
-                    筹备参加今年10月的美国芝加哥艺术博览会（Artexpo Chicago），目前官方个人网站搭建完成并正式上线，正在进行作品档案 of 的数字化整理与画册PDF的设计。
-                </p>
-            </div>
-
-            <div style="margin-bottom: 25px; border-bottom: 1px dashed #eee; padding-bottom: 15px; text-align: left;">
-                <span style="font-size: 13px; color: #999; display: block; margin-bottom: 5px;">2026年3月</span>
-                <p style="margin: 0; font-size: 15px; line-height: 1.6; color: #333; text-align: left;">
-                    油画作品《渔歌朝晖迎华诞之二》在第十届中国北京国际美术双年展（北京展览馆）展出，现场与多位写意油画流派的艺术家及老友进行了深入的学术交流。
-                </p>
-            </div>
-
-            <div style="margin-bottom: 25px; border-bottom: 1px dashed #eee; padding-bottom: 15px; text-align: left;">
-                <span style="font-size: 13px; color: #999; display: block; margin-bottom: 5px;">2026年2月</span>
-                <p style="margin: 0; font-size: 15px; line-height: 1.6; color: #333; text-align: left;">
-                    开启全新写生创作项目，计划进行为期两年的长途旅行写生。首站前往风景独特的地貌区域进行plein air（户外写生）创作，捕捉自然光影与粗犷的点线面语汇。
-                </p>
-            </div>
-
-        </div>
-    </div>
-</div>
-
-<script>
-    const track = document.querySelector('.carousel-track');
-    const modal = document.getElementById('imageModal');
-    const modalImg = document.getElementById('modalImg');
-    const modalClose = document.getElementById('modalClose');
-    const infoTitle = document.getElementById('infoTitle');
-    const infoDetails = document.getElementById('infoDetails');
-
-    // 大图单击放大
-    track.addEventListener('click', function(e) {
-        if (e.target.tagName === 'IMG') {
-            const img = e.target;
-            const title = img.getAttribute('data-title') || '未题名';
-            const size = img.getAttribute('data-size') || '尺寸未注明';
-            const year = img.getAttribute('data-year') || '年代未知';
-            
-            modalImg.src = img.src;
-            infoTitle.textContent = title;
-            infoDetails.textContent = "尺寸: " + size + "  |  年代: " + year + "年";
-            
-            modal.classList.add('active');
-        }
-    });
-
-    modalClose.addEventListener('click', function() { modal.classList.remove('active'); });
-    modal.addEventListener('click', function(e) { if (e.target === modal) { modal.classList.remove('active'); } });
-
-    // 日常动态双击触发
-    const updatesTrigger = document.getElementById('updatesTrigger');
-    const updatesModal = document.getElementById('updatesModal');
-    const updatesClose = document.getElementById('updatesClose');
-
-    updatesTrigger.addEventListener('dblclick', function() {
-        updatesModal.classList.add('active');
-    });
-
-    updatesClose.addEventListener('click', function() {
-        updatesModal.classList.remove('active');
-    });
-
-    updatesModal.addEventListener('click', function(e) {
-        if (e.target === updatesModal) {
-            updatesModal.classList.remove('active');
-        }
-    });
-</script>
-</body>
-</html>
+2018年《情系威海}入选“逐梦·威海卫”2018全国风景、静物油画作品展
