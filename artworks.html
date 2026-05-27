@@ -13,7 +13,7 @@
             line-height: 1.7;
         }
         .container {
-            max-width: 1000px;
+            max-width: 1200px; /* ⚡ 拓宽了容器，更适合双列大图展示 */
             margin: 0 auto;
             background: white;
             padding: 40px;
@@ -38,52 +38,40 @@
         }
         .back-btn:hover { background: #444; }
 
-        /* 自动计数器 */
-        .timeline {
-            position: relative;
-            padding-left: 45px; 
-            counter-reset: my-counter; 
+        /* ⚡ 核心改动 1：改用标准 CSS 瀑布流布局，死死锁定制导两端对齐 */
+        .waterfall-masonry {
+            column-count: 2;          /* 电脑端严格分为 2 列 */
+            column-gap: 30px;         /* 两列之间的间距 */
+            width: 100%;
+        }
+
+        /* 响应式：如果是手机屏幕，自动切换为单列，防止画面太挤 */
+        @media (max-width: 768px) {
+            .waterfall-masonry {
+                column-count: 1;
+            }
         }
         
+        /* ⚡ 核心改动 2：每一个作品卡片的容器样式 */
         .event {
-            position: relative;
-            margin-bottom: 40px;
-        }
-        
-        .event-date {
-            position: absolute;
-            left: -45px;
-            top: 0;
-            width: 35px;
-            text-align: left;
-            color: #222;
-            font-size: 24px;
-            font-weight: bold;
-            line-height: 1;
-            font-family: "Georgia", Times, serif;
-        }
-        .event-date::before {
-            counter-increment: my-counter;
-            content: counter(my-counter);
-        }
-        
-        .event-content {
+            break-inside: avoid;      /* 极其重要！防止单张画被强行截断到下一列 */
             background: #fff;
+            margin-bottom: 30px;      /* 上下作品之间的间距 */
             padding: 20px 25px;
             border-radius: 10px;
             box-shadow: 0 4px 15px rgba(0,0,0,0.04);
             border: 1px solid #eee;
-            /* ⚡ 核心改动 1：锁定文字内容的左右两端对齐 */
+            box-sizing: border-box;
+        }
+        
+        .event-content {
             text-align: justify;
             text-justify: inter-ideograph;
         }
         
         .event-content img {
-            /* ⚡ 核心改动 2：将宽度改为 100%，强行让所有画作的左右边缘完美对齐容器 */
-            width: 100%;
-            height: auto;
-            max-height: 650px;        /* 保持大画细节的最大限度高度 */
-            object-fit: contain;      /* 确保油画作品绝不扭曲变形 */
+            width: 100%;              /* 宽度百分百，死死对齐卡片左右两端 */
+            height: auto;             /* 高度自由变动，绝对不拉伸变形 */
             border-radius: 6px;       
             margin-top: 15px;         
             display: block;
@@ -105,10 +93,9 @@
         <a href="index.html" class="back-btn">← 返回首页</a>
         <h1>大型创作 Major Production</h1>
         
-        <div class="timeline">
+        <div class="waterfall-masonry">
 
             <div class="event">
-                <div class="event-date"></div> 
                 <div class="event-content">
                     <h3>《渔歌朝晖迎华诞之一》</h3>
                     <p>杜华显油画作品 Oil Paintings by Du Huaxian 布面油画。入选第十四届全国美展。</p>
@@ -117,7 +104,6 @@
             </div>
             
             <div class="event">
-                <div class="event-date"></div> 
                 <div class="event-content">
                     <h3>《渔歌朝晖迎华诞》</h3>
                     <p>杜华显油画作品 Oil Paintings by Du Huaxian：204×140cm，布面油画。</p>
@@ -126,7 +112,6 @@
             </div>
             
             <div class="event">
-                <div class="event-date"></div> 
                 <div class="event-content">
                     <h3>《渔歌朝晖迎华诞之二》</h3>
                     <p>杜华显油画作品 Oil Paintings by Du Huaxian 布面油画。</p>
@@ -135,7 +120,6 @@
             </div>
 
             <div class="event">
-                <div class="event-date"></div> 
                 <div class="event-content">
                     <h3>《渔歌朝晖迎华诞之三》</h3>
                     <p>杜华显油画作品 Oil Paintings by Du Huaxian：布面油画。 140x201cm 2024 入选第十届中国北京国际美术双年展主题展。</p>
@@ -144,7 +128,6 @@
             </div>
 
             <div class="event">
-                <div class="event-date"></div> 
                 <div class="event-content">
                     <h3>《渔歌朝晖迎华诞之三》</h3>
                     <p>杜华显油画作品 Oil Paintings by Du Huaxian：布面油画。 140x201cm </p>
@@ -153,7 +136,6 @@
             </div>
 
             <div class="event">
-                <div class="event-date"></div> 
                 <div class="event-content">
                     <h3>《渔歌朝晖迎华诞之三》</h3>
                     <p>杜华显油画作品 Oil Paintings by Du Huaxian：布面油画。 140x201cm 2024 。</p>
@@ -162,7 +144,6 @@
             </div>
 
             <div class="event">
-                <div class="event-date"></div> 
                 <div class="event-content">
                     <h3>《渔歌朝晖迎华诞之三》</h3>
                     <p>杜华显油画作品 Oil Paintings by Du Huaxian：布面油画。 140x201cm 2024 入选第十届中国北京国际美术双年展主题展。</p>
@@ -171,7 +152,6 @@
             </div>
 
             <div class="event">
-                <div class="event-date"></div> 
                 <div class="event-content">
                     <h3>《渔歌朝晖迎华诞之三》</h3>
                     <p>杜华显油画作品 Oil Paintings by Du Huaxian：布面油画. 140x201cm 2024 入选第十届中国北京国际美术双年展主题展。</p>
@@ -180,7 +160,6 @@
             </div>
 
             <div class="event">
-                <div class="event-date"></div> 
                 <div class="event-content">
                     <h3>《渔歌朝晖迎华诞之三》</h3>
                     <p>杜华显油画作品 Oil Paintings by Du Huaxian：布面油画。 140x201cm 2024 入选第十届中国北京国际美术双年展主题展。</p>
@@ -189,7 +168,6 @@
             </div>
 
             <div class="event">
-                <div class="event-date"></div> 
                 <div class="event-content">
                     <h3>《渔歌朝晖迎华诞之三》</h3>
                     <p>杜华显油画作品 Oil Paintings by Du Huaxian：布面油画。 140x201cm 2024 入选第十届中国北京国际美术双年展主题展。</p>
@@ -198,7 +176,6 @@
             </div>
 
             <div class="event">
-                <div class="event-date"></div> 
                 <div class="event-content">
                     <h3>《渔歌朝晖迎华诞之三》</h3>
                     <p>杜华显油画作品 Oil Paintings by Du Huaxian：布面油画。 140x201cm 2024 入选第十届中国北京国际美术双年展主题展。</p>
@@ -207,7 +184,6 @@
             </div>
 
             <div class="event">
-                <div class="event-date"></div> 
                 <div class="event-content">
                     <h3>《渔歌朝晖迎华诞之三》</h3>
                     <p>杜华显油画作品 Oil Paintings by Du Huaxian：布面油画。 140x201cm 2024 入选第十届中国北京国际美术双年展主题展。</p>
@@ -216,7 +192,6 @@
             </div>
 
             <div class="event">
-                <div class="event-date"></div> 
                 <div class="event-content">
                     <h3>《渔歌朝晖迎华诞之三》</h3>
                     <p>杜华显油画作品 Oil Paintings by Du Huaxian：布面油画。 140x201cm 2024 入选第十届中国北京国际美术双年展主题展。</p>
@@ -225,7 +200,6 @@
             </div>
 
             <div class="event">
-                <div class="event-date"></div> 
                 <div class="event-content">
                     <h3>《夜色港湾》之二</h3>
                     <p>杜华显油画作品 Oil Paintings by Du Huaxian：130X180cm 2024。</p>
@@ -234,7 +208,6 @@
             </div>
 
             <div class="event">
-                <div class="event-date"></div> 
                 <div class="event-content">
                     <h3>《夜色港湾》之三</h3>
                     <p>杜华显油画作品 Oil Paintings by Du Huaxian：130X180cm 2023 入选百家金陵油画双年展。</p>
@@ -243,7 +216,6 @@
             </div>
 
             <div class="event">
-                <div class="event-date"></div> 
                 <div class="event-content">
                     <h3>《夜色港湾》之四</h3>
                     <p>杜华显油画作品 Oil Paintings by Du Huaxian：140X180cm 2022 入选少数民族双年展。</p>
@@ -252,16 +224,14 @@
             </div>
 
             <div class="event">
-                <div class="event-date"></div> 
                 <div class="event-content">
                     <h3>《夜色港湾》之五</h3>
                     <p>杜华显油画作品 Oil Paintings by Du Huaxian：130X180cm 2022。</p>
-                    <img src="《夜色渔港之十一》T04A0252.jpg" alt="渔歌朝晖迎华诞之二">
+                    <img src="《夜色渔港之十一 / 252.jpg" alt="渔歌朝晖迎华诞之二">
                 </div>
             </div>
 
             <div class="event">
-                <div class="event-date"></div> 
                 <div class="event-content">
                     <h3>《夜色港湾》之六</h3>
                     <p>杜华显油画作品 Oil Paintings by Du Huaxian：130X180cm 2022。</p>
@@ -270,7 +240,6 @@
             </div>
 
             <div class="event">
-                <div class="event-date"></div> 
                 <div class="event-content">
                     <h3>《夜色港湾》之七</h3>
                     <p>杜华显油画作品 Oil Paintings by Du Huaxian：130X180cm 2022。</p>
@@ -279,7 +248,6 @@
             </div>
 
             <div class="event">
-                <div class="event-date"></div> 
                 <div class="event-content">
                     <h3>《夜色港湾》之八 入选香凝如故</h3>
                     <p>杜华显油画作品 Oil Paintings by Du Huaxian：130X180cm 2022。</p>
@@ -288,7 +256,6 @@
             </div>
 
             <div class="event">
-                <div class="event-date"></div> 
                 <div class="event-content">
                     <h3>《夜色港湾》之八</h3>
                     <p>杜华显油画作品 Oil Paintings by Du Huaxian：130X180cm 2022。</p>
@@ -297,7 +264,6 @@
             </div>
 
             <div class="event">
-                <div class="event-date"></div> 
                 <div class="event-content">
                     <h3>《麻黄梁 mahuangliang》4</h3>
                     <p>杜华显油画作品 Oil Paintings by Du Huaxian：布面油画。130X180cm 2017。</p>
@@ -306,7 +272,6 @@
             </div>
 
             <div class="event">
-                <div class="event-date"></div> 
                 <div class="event-content">
                     <h3>《麻黄梁 mahuangliang》3</h3>
                     <p>杜华显油画作品 Oil Paintings by Du Huaxian：布面油画。130X180cm 2017。</p>
@@ -315,7 +280,6 @@
             </div>
 
             <div class="event">
-                <div class="event-date"></div> 
                 <div class="event-content">
                     <h3>《麻黄梁 mahuangliang》1</h3>
                     <p>杜华显油画作品 Oil Paintings by Du Huaxian：布面油画。130X180cm 2017。</p>
@@ -324,7 +288,6 @@
             </div>
 
             <div class="event">
-                <div class="event-date"></div> 
                 <div class="event-content">
                     <h3>《麻黄梁 mahuangliang》2</h3>
                     <p>杜华显油画作品 Oil Paintings by Du Huaxian：布面油画。130X180cm 2017。</p>
