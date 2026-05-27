@@ -19,6 +19,7 @@
             padding: 40px;
             border-radius: 12px;
             box-shadow: 0 8px 30px rgba(0,0,0,0.08);
+            box-sizing: border-box;
         }
         h1 {
             text-align: center;
@@ -71,17 +72,20 @@
         
         .event-content {
             background: #fff;
-            padding: 20px 25px;
+            padding: 25px;
             border-radius: 10px;
             box-shadow: 0 4px 15px rgba(0,0,0,0.04);
             border: 1px solid #eee;
+            box-sizing: border-box;
+            /* ⚡ 保持一致：文字两端严格对齐 */
+            text-align: justify;
+            text-justify: inter-ideograph;
         }
         
         /* 🎨 针对图片进行的画廊艺术级微调 */
         .event-content img {
-            max-width: 100%;
-            max-height: 500px;        /* ⚡ 核心：控制图片在网页中绝不拉得过长 */
-            object-fit: contain;      /* ⚡ 核心：等比例缩放，油画绝对不扭曲变形 */
+            width: 100%;              /* ⚡ 保持一致：死死锁定制导单列宽度 100%，两端完美对齐 */
+            height: auto;             /* ⚡ 保持一致：高度根据原图比例完全自由变动 */
             border-radius: 6px;       /* 柔和的微圆角 */
             margin-top: 15px;         /* 与上方文字保持呼吸空隙 */
             display: block;
@@ -96,6 +100,23 @@
             color: #555;
             margin: 0;
         }
+
+        /* 🔗 专访链接专属优雅样式 */
+        .interview-link {
+            color: #0066cc;
+            text-decoration: underline;
+            word-break: break-all;    /* 防止长链接撑破网页布局 */
+            background: #f0f5fa;      /* 淡淡的衬底色，更具引导性 */
+            padding: 2px 6px;
+            border-radius: 4px;
+            display: inline-block;
+            margin-top: 5px;
+            transition: all 0.2s ease;
+        }
+        .interview-link:hover {
+            color: #004499;
+            background: #e1ecf7;
+        }
     </style>
 </head>
 <body>
@@ -109,7 +130,7 @@
                 <div class="event-date"></div> 
                 <div class="event-content">
                     <h3>2026年</h3>
-                    <p>中国网专访 http://hs.china.com.cn/2026-04/03/content_43390277.html </p>
+                    <p>中国网专访：<br><a class="interview-link" href="http://hs.china.com.cn/2026-04/03/content_43390277.html" target="_blank">http://hs.china.com.cn/2026-04/03/content_43390277.html</a></p>
                     <img src="tu1.jpg" alt="2000年作品/证书">
                 </div>
             </div>
