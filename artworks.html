@@ -38,7 +38,7 @@
         }
         .back-btn:hover { background: #444; }
 
-        /* ⚡ 自动计数器 */
+        /* 自动计数器 */
         .timeline {
             position: relative;
             padding-left: 45px; 
@@ -73,11 +73,16 @@
             border-radius: 10px;
             box-shadow: 0 4px 15px rgba(0,0,0,0.04);
             border: 1px solid #eee;
+            /* ⚡ 核心改动 1：锁定文字内容的左右两端对齐 */
+            text-align: justify;
+            text-justify: inter-ideograph;
         }
         
         .event-content img {
-            max-width: 100%;
-            max-height: 650px;        /* ⚡ 针对大型创作调高了最大高度，展现大画细节 */
+            /* ⚡ 核心改动 2：将宽度改为 100%，强行让所有画作的左右边缘完美对齐容器 */
+            width: 100%;
+            height: auto;
+            max-height: 650px;        /* 保持大画细节的最大限度高度 */
             object-fit: contain;      /* 确保油画作品绝不扭曲变形 */
             border-radius: 6px;       
             margin-top: 15px;         
@@ -129,7 +134,7 @@
                 </div>
             </div>
 
-                        <div class="event">
+            <div class="event">
                 <div class="event-date"></div> 
                 <div class="event-content">
                     <h3>《渔歌朝晖迎华诞之三》</h3>
@@ -138,8 +143,7 @@
                 </div>
             </div>
 
-            
-                        <div class="event">
+            <div class="event">
                 <div class="event-date"></div> 
                 <div class="event-content">
                     <h3>《渔歌朝晖迎华诞之三》</h3>
@@ -148,8 +152,7 @@
                 </div>
             </div>
 
-            
-                        <div class="event">
+            <div class="event">
                 <div class="event-date"></div> 
                 <div class="event-content">
                     <h3>《渔歌朝晖迎华诞之三》</h3>
@@ -158,8 +161,7 @@
                 </div>
             </div>
 
-            
-                        <div class="event">
+            <div class="event">
                 <div class="event-date"></div> 
                 <div class="event-content">
                     <h3>《渔歌朝晖迎华诞之三》</h3>
@@ -168,18 +170,16 @@
                 </div>
             </div>
 
-            
-                        <div class="event">
+            <div class="event">
                 <div class="event-date"></div> 
                 <div class="event-content">
                     <h3>《渔歌朝晖迎华诞之三》</h3>
-                    <p>杜华显油画作品 Oil Paintings by Du Huaxian：布面油画。 140x201cm 2024 入选第十届中国北京国际美术双年展主题展。</p>
+                    <p>杜华显油画作品 Oil Paintings by Du Huaxian：布面油画. 140x201cm 2024 入选第十届中国北京国际美术双年展主题展。</p>
                     <img src="yujia5.jpg" alt="渔歌朝晖迎华诞之二">
                 </div>
             </div>
 
-            
-                        <div class="event">
+            <div class="event">
                 <div class="event-date"></div> 
                 <div class="event-content">
                     <h3>《渔歌朝晖迎华诞之三》</h3>
@@ -188,8 +188,7 @@
                 </div>
             </div>
 
-            
-                        <div class="event">
+            <div class="event">
                 <div class="event-date"></div> 
                 <div class="event-content">
                     <h3>《渔歌朝晖迎华诞之三》</h3>
@@ -198,8 +197,7 @@
                 </div>
             </div>
 
-            
-                        <div class="event">
+            <div class="event">
                 <div class="event-date"></div> 
                 <div class="event-content">
                     <h3>《渔歌朝晖迎华诞之三》</h3>
@@ -208,8 +206,7 @@
                 </div>
             </div>
 
-            
-                        <div class="event">
+            <div class="event">
                 <div class="event-date"></div> 
                 <div class="event-content">
                     <h3>《渔歌朝晖迎华诞之三》</h3>
@@ -218,8 +215,7 @@
                 </div>
             </div>
 
-            
-                        <div class="event">
+            <div class="event">
                 <div class="event-date"></div> 
                 <div class="event-content">
                     <h3>《渔歌朝晖迎华诞之三》</h3>
@@ -228,8 +224,7 @@
                 </div>
             </div>
 
-            
-              <div class="event">
+            <div class="event">
                 <div class="event-date"></div> 
                 <div class="event-content">
                     <h3>《夜色港湾》之二</h3>
@@ -238,7 +233,7 @@
                 </div>
             </div>
 
-              <div class="event">
+            <div class="event">
                 <div class="event-date"></div> 
                 <div class="event-content">
                     <h3>《夜色港湾》之三</h3>
@@ -247,7 +242,7 @@
                 </div>
             </div>
 
-              <div class="event">
+            <div class="event">
                 <div class="event-date"></div> 
                 <div class="event-content">
                     <h3>《夜色港湾》之四</h3>
@@ -256,7 +251,7 @@
                 </div>
             </div>
 
-              <div class="event">
+            <div class="event">
                 <div class="event-date"></div> 
                 <div class="event-content">
                     <h3>《夜色港湾》之五</h3>
@@ -265,7 +260,7 @@
                 </div>
             </div>
 
-              <div class="event">
+            <div class="event">
                 <div class="event-date"></div> 
                 <div class="event-content">
                     <h3>《夜色港湾》之六</h3>
@@ -274,7 +269,7 @@
                 </div>
             </div>
 
-              <div class="event">
+            <div class="event">
                 <div class="event-date"></div> 
                 <div class="event-content">
                     <h3>《夜色港湾》之七</h3>
@@ -283,7 +278,7 @@
                 </div>
             </div>
 
-              <div class="event">
+            <div class="event">
                 <div class="event-date"></div> 
                 <div class="event-content">
                     <h3>《夜色港湾》之八 入选香凝如故</h3>
@@ -292,7 +287,7 @@
                 </div>
             </div>
 
-                          <div class="event">
+            <div class="event">
                 <div class="event-date"></div> 
                 <div class="event-content">
                     <h3>《夜色港湾》之八</h3>
@@ -301,7 +296,7 @@
                 </div>
             </div>
 
-                        <div class="event">
+            <div class="event">
                 <div class="event-date"></div> 
                 <div class="event-content">
                     <h3>《麻黄梁 mahuangliang》4</h3>
@@ -310,7 +305,7 @@
                 </div>
             </div>
 
-                        <div class="event">
+            <div class="event">
                 <div class="event-date"></div> 
                 <div class="event-content">
                     <h3>《麻黄梁 mahuangliang》3</h3>
@@ -319,7 +314,7 @@
                 </div>
             </div>
 
-                        <div class="event">
+            <div class="event">
                 <div class="event-date"></div> 
                 <div class="event-content">
                     <h3>《麻黄梁 mahuangliang》1</h3>
@@ -337,7 +332,7 @@
                 </div>
             </div>
 
-            </div>
+        </div>
     </div>
 </body>
 </html>
