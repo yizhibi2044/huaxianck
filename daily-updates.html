@@ -39,78 +39,76 @@
         }
         .back-btn:hover { background: #444; }
 
-        /* ⚡ 开启全自动计数器 */
+        /* --- 修正后的时间轴样式（按年份分级） --- */
         .timeline {
             position: relative;
-            padding-left: 45px; 
-            counter-reset: my-counter; /* 初始化计数器 */
+            padding-left: 20px;
         }
         
-        .event {
+        /* 每一年的大区块 */
+        .year-group {
+            display: flex;
+            margin-bottom: 50px;
             position: relative;
-            margin-bottom: 40px;
         }
-        
-        /* ⚡ 让浏览器自己计算并显示数字序号 */
-        .event-date {
-            position: absolute;
-            left: -45px;
-            top: 0;
-            width: 35px;
-            text-align: left;
-            color: #222;
-            font-size: 24px;
+
+        /* 左侧固定年份展示 */
+        .year-label {
+            width: 120px;
+            font-size: 26px;
             font-weight: bold;
-            line-height: 1;
+            color: #222;
             font-family: "Georgia", Times, serif;
+            flex-shrink: 0;
+            padding-top: 10px;
         }
-        /* 核心逻辑：每出现一个 event 块，数字自动加 1 */
-        .event-date::before {
-            counter-increment: my-counter;
-            content: counter(my-counter);
+
+        /* 右侧动态列表容器 */
+        .year-events {
+            flex-grow: 1;
         }
         
-        .event-content {
+        /* 单个动态卡片 */
+        .event-card {
             background: #fff;
             padding: 25px;
             border-radius: 10px;
             box-shadow: 0 4px 15px rgba(0,0,0,0.04);
             border: 1px solid #eee;
             box-sizing: border-box;
-            /* ⚡ 保持一致：文字两端严格对齐 */
             text-align: justify;
             text-justify: inter-ideograph;
+            margin-bottom: 20px;
+        }
+        .event-card:last-child {
+            margin-bottom: 0;
         }
         
-        /* 🎨 针对图片进行的画廊艺术级微调 */
-        .event-content img {
-            width: 100%;              /* ⚡ 保持一致：死死锁定制导单列宽度 100%，两端完美对齐 */
-            height: auto;             /* ⚡ 保持一致：高度根据原图比例完全自由变动 */
-            border-radius: 6px;       /* 柔和的微圆角 */
-            margin-top: 15px;         /* 与上方文字保持呼吸空隙 */
+        /* 图片样式 */
+        .event-card img {
+            width: 100%;              
+            height: auto;             
+            border-radius: 6px;       
+            margin-top: 15px;         
             display: block;
         }
         
-        .event-content h3 {
-            margin: 0 0 12px 0;
-            color: #222;
-            font-size: 20px;
-        }
-        .event-content p {
-            color: #555;
+        .event-card p {
+            color: #333;
             margin: 0;
+            font-size: 16px;
         }
 
-        /* 🔗 专访链接专属优雅样式 */
+        /* 🔗 专访链接优雅样式 */
         .interview-link {
             color: #0066cc;
             text-decoration: underline;
-            word-break: break-all;    /* 防止长链接撑破网页布局 */
-            background: #f0f5fa;      /* 淡淡的衬底色，更具引导性 */
-            padding: 2px 6px;
+            word-break: break-all;    
+            background: #f0f5fa;      
+            padding: 2px 8px;
             border-radius: 4px;
             display: inline-block;
-            margin-top: 5px;
+            margin-top: 8px;
             transition: all 0.2s ease;
         }
         .interview-link:hover {
@@ -122,92 +120,77 @@
 <body>
     <div class="container">
         <a href="index.html" class="back-btn">← 返回首页</a>
-        <h1>日常动态 Daily Updates </h1>
+        <h1>日常动态 Daily Updates</h1>
         
         <div class="timeline">
 
-            <div class="event">
-                <div class="event-date"></div> 
-                <div class="event-content">
-                    <h3>2026年</h3>
-                    <p>中国网专访：<br><a class="interview-link" href="http://hs.china.com.cn/2026-04/03/content_43390277.html" target="_blank">http://hs.china.com.cn/2026-04/03/content_43390277.html</a></p>
-                   
+            <div class="year-group">
+                <div class="year-label">2026年</div>
+                <div class="year-events">
+                    <div class="event-card">
+                        <p>中国网专访：<br>
+                        <a class="interview-link" href="http://hs.china.com.cn/2026-04/03/content_43390277.html" target="_blank">http://hs.china.com.cn/2026-04/03/content_43390277.html</a></p>
+                    </div>
+                    <div class="event-card">
+                        <p>凤凰网专访：逐浪时代的色彩交响：专访著名油画家杜华显<br>
+                        <a class="interview-link" href="https://ishare.ifeng.com/c/s/8rzbzQF9N3z" target="_blank">点击阅读凤凰网专访</a></p>
+                    </div>
+                    <div class="event-card">
+                        <p>凤凰网专访：双国家级展览入选！杜华显画家两幅《幸福生活》油画佳作绘就时代民生图景<br>
+                        <a class="interview-link" href="https://sd.ifeng.com/c/8sTQ25uPc5c" target="_blank">点击阅读凤凰网专访</a></p>
+                    </div>
                 </div>
             </div>
 
-   <div class="event">
-                <div class="event-date"></div> 
-                <div class="event-content">
-                    <h3>2026年</h3>
-                    <p>凤凰网专访：逐浪时代的色彩交响：专访著名油画家杜华显<br><a class="interview-link" href="https://ishare.ifeng.com/c/s/8rzbzQF9N3z</a></p>
-                   
-                </div>
-            </div>
-
-    <div class="event">
-                <div class="event-date"></div> 
-                <div class="event-content">
-                    <h3>2026年</h3>
-                    <p>凤凰网专访：双国家级展览入选！杜华显画家两幅《幸福生活》油画佳作绘就时代民生图景<br><a class="interview-link" href="https://sd.ifeng.com/c/8sTQ25uPc5c</a></p>
-                   
-                </div>
-            </div>
-
-            
-
-
-            
-            <div class="event">
-                <div class="event-date"></div> 
-                <div class="event-content">
-                    <h3>2000年</h3>
-                    <p>《农业知识》2000年12期版式山东省专业报刊新闻奖三等奖</p>
-                    <img src="tu1.jpg" alt="2000年作品/证书">
+            <div class="year-group">
+                <div class="year-label">2000年</div>
+                <div class="year-events">
+                    <div class="event-card">
+                        <p>《农业知识》2000年12期版式山东省专业报刊新闻奖三等奖</p>
+                        <img src="tu1.jpg" alt="2000年作品/证书">
+                    </div>
                 </div>
             </div>
             
-            <div class="event">
-                <div class="event-date"></div> 
-                <div class="event-content">
-                    <h3>1999年</h3>
-                    <p>油画作品在山东省两代人书画摄影大赛中获得三等奖。</p>
-                    <img src="tu2.jpg" alt="1999年作品">
+            <div class="year-group">
+                <div class="year-label">1999年</div>
+                <div class="year-events">
+                    <div class="event-card">
+                        <p>油画作品在山东省两代人书画摄影大赛中获得三等奖。</p>
+                        <img src="tu2.jpg" alt="1999年作品">
+                    </div>
+                    <div class="event-card">
+                        <p>《女人体》《油画风景》参加学院优秀学生汇报展。</p>
+                        <img src="tu3.jpg" alt="1999年汇报展作品">
+                    </div>
                 </div>
             </div>
 
-            <div class="event">
-                <div class="event-date"></div>
-                <div class="event-content">
-                    <h3>1999年</h3>
-                    <p>《女人体》《油画风景》参加学院优秀学生汇报展。</p>
-                    <img src="tu3.jpg" alt="1999年汇报展作品">
+            <div class="year-group">
+                <div class="year-label">1998年</div>
+                <div class="year-events">
+                    <div class="event-card">
+                        <p>油画作品《追寻》在庆祝改革开放二十周年美术作品展获三等奖</p>
+                        <img src="tu4.jpg" alt="追寻">
+                    </div>
                 </div>
             </div>
 
-            <div class="event">
-                <div class="event-date"></div>
-                <div class="event-content">
-                    <h3>成绩</h3>
-                    <p>1998年油画作品《追寻》在庆祝改革开放二十周年美术作品展获三等奖</p>
-                    <img src="tu4.jpg" alt="追寻">
+            <div class="year-group">
+                <div class="year-label">1997年</div>
+                <div class="year-events">
+                    <div class="event-card">
+                        <p>在美术系素描大赛二等奖</p>
+                    </div>
                 </div>
             </div>
 
-            <div class="event">
-                <div class="event-date"></div>
-                <div class="event-content">
-                    <h3>1997</h3>
-                    <p>年在美术系素描大赛二等奖</p>
-                    
-                </div>
-            </div>
-
-            <div class="event">
-                <div class="event-date"></div>
-                <div class="event-content">
-                    <h3>1996 山东艺术学院 油画第一工作室</h3>
-                    <p>油画第一工作室 系统学习。</p>
-                    
+            <div class="year-group">
+                <div class="year-label">1996年</div>
+                <div class="year-events">
+                    <div class="event-card">
+                        <p><strong>山东艺术学院 油画第一工作室</strong><br>系统学习。</p>
+                    </div>
                 </div>
             </div>
 
