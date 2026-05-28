@@ -14,6 +14,17 @@
             box-sizing: border-box;
             margin-bottom: 20px;  /* 跟大图保持一点高级的上下距离 */
         }
+        /* ✉️ 邮箱链接的高级定制样式 */
+        .email-link {
+            color: #444444;       /* 儒雅深灰色 */
+            text-decoration: none; /* 去除默认的下划线 */
+            transition: color 0.2s ease, text-decoration 0.2s ease;
+        }
+        .email-link:hover {
+            color: #000000;       /* 悬停时加深 */
+            text-decoration: underline; /* 悬停时显示下划线提示 */
+        }
+        
         /* 小图下方文字的独立样式 */
         .thumb-title {
             text-align: left;      /* 👈 核心：控制文字严格左对齐 */
@@ -255,7 +266,8 @@
         
         <header>
             <h1>huaxian du 杜华显</h1>
-            <p class="subtitle">Email:dhx1974@gmail.com, Lucky Dog.</p>
+            <!-- ✉️ 修改后的邮箱代码，带点击发邮件功能 -->
+            <p class="subtitle">Email:<a href="mailto:dhx1974@gmail.com" class="email-link">dhx1974@gmail.com</a>, Lucky Dog.</p>
         </header>
 
         <div class="gallery-container">
@@ -375,25 +387,28 @@ July 2024: Du Huaxian’s *Fishermen’s Songs and Morning Glow Celebrate the Na
 2018年作品《夜色》入选北京意象 诗话海淀大型美术创作并在中国美术馆展出（北京美术家协会）
 2018年，2019年作品入选得境取象东亿中国油画展
 2018年《正午高原》入选第七届高原展并获优秀奖</p>
-                            </div>
                         </div>
-
-                        <div class="profile-downloads">
-                            <a href="./du-huaxian-portfolio.pdf" target="_blank" class="download-btn">
-                                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v4M7 10l5 5 5-5M12 15V3"/></svg>
-                                下载艺术作品集 (Download Portfolio PDF)
-                            </a>
-                            <p class="download-hint">提示：点击可直接在线浏览或下载完整版 PDF 作品集</p>
-                        </div>
-
                     </div>
-                </section>
 
-            </div> </div> <footer>
-            <p>© 2026 Minimalism Grid. All rights reserved.</p>
-        </footer>
+                    <div class="profile-downloads">
+                        <a href="./du-huaxian-portfolio.pdf" target="_blank" class="download-btn">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v4M7 10l5 5 5-5M12 15V3"/></svg>
+                            下载艺术作品集 (Download Portfolio PDF)
+                        </a>
+                        <p class="download-hint">提示：点击可直接在线浏览或下载完整版 PDF 作品集</p>
+                    </div>
 
-    </div> <div class="modal-overlay" id="imageModal">
+                </div>
+            </section>
+
+        </div> 
+    </div> 
+    
+    <footer>
+        <p>© 2026 Minimalism Grid. All rights reserved.</p>
+    </footer>
+
+    <div class="modal-overlay" id="imageModal">
         <div class="modal-content">
             <span class="modal-close" id="modalClose">&times;</span>
             <img src="" alt="作品放大图" class="modal-img" id="modalImg">
