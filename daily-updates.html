@@ -39,22 +39,22 @@
         }
         .back-btn:hover { background: #444; }
 
-        /* --- 修正后的时间轴样式（按年份分级） --- */
+        /* --- 修正后的左右分级 + 右侧上下排列结构 --- */
         .timeline {
             position: relative;
-            padding-left: 20px;
+            padding-left: 10px;
         }
         
-        /* 每一年的大区块 */
+        /* 每一年的大区块：年份与右侧整体呈左右排列 */
         .year-group {
             display: flex;
             margin-bottom: 50px;
             position: relative;
         }
 
-        /* 左侧固定年份展示 */
+        /* 左侧固定年份：宽度足够且不显拥挤 */
         .year-label {
-            width: 120px;
+            width: 140px;
             font-size: 26px;
             font-weight: bold;
             color: #222;
@@ -63,9 +63,12 @@
             padding-top: 10px;
         }
 
-        /* 右侧动态列表容器 */
+        /* 右侧动态列表容器：开启 Flex 垂直排列，让卡片乖乖上下堆叠 */
         .year-events {
             flex-grow: 1;
+            display: flex;
+            flex-direction: column; 
+            gap: 20px; /* 卡片之间的上下间距 */
         }
         
         /* 单个动态卡片 */
@@ -78,10 +81,7 @@
             box-sizing: border-box;
             text-align: justify;
             text-justify: inter-ideograph;
-            margin-bottom: 20px;
-        }
-        .event-card:last-child {
-            margin-bottom: 0;
+            width: 100%; /* 让卡片撑满右侧区域 */
         }
         
         /* 图片样式 */
@@ -115,6 +115,17 @@
             color: #004499;
             background: #e1ecf7;
         }
+
+        /* 📱 响应式微调：在手机端自动变成纯上下排列，防止左侧年份太挤 */
+        @media (max-width: 768px) {
+            .year-group {
+                flex-direction: column;
+            }
+            .year-label {
+                width: 100%;
+                margin-bottom: 15px;
+            }
+        }
     </style>
 </head>
 <body>
@@ -124,32 +135,35 @@
         
         <div class="timeline">
 
+            <!-- 2026年 区块 -->
             <div class="year-group">
                 <div class="year-label">2026年</div>
                 <div class="year-events">
                     
-                   <div class="event-card">
+                    <div class="event-card">
                         <p>纽约FLOHAUS Gallery 画廊展览：<br>
                         <a class="interview-link" href="http://hs.china.com.cn/2026-04/03/content_43390277.html" target="_blank">http://hs.china.com.cn/2026-04/03/content_43390277.html</a></p>
-                    </div>
-             
                     </div>
                     
                     <div class="event-card">
                         <p>中国网专访：<br>
                         <a class="interview-link" href="http://hs.china.com.cn/2026-04/03/content_43390277.html" target="_blank">http://hs.china.com.cn/2026-04/03/content_43390277.html</a></p>
                     </div>
+
                     <div class="event-card">
                         <p>凤凰网专访：逐浪时代的色彩交响：专访著名油画家杜华显<br>
                         <a class="interview-link" href="https://ishare.ifeng.com/c/s/8rzbzQF9N3z" target="_blank">点击阅读凤凰网专访</a></p>
                     </div>
+
                     <div class="event-card">
                         <p>凤凰网专访：双国家级展览入选！杜华显画家两幅《幸福生活》油画佳作绘就时代民生图景<br>
                         <a class="interview-link" href="https://sd.ifeng.com/c/8sTQ25uPc5c" target="_blank">点击阅读凤凰网专访</a></p>
                     </div>
+
                 </div>
             </div>
 
+            <!-- 2000年 区块 -->
             <div class="year-group">
                 <div class="year-label">2000年</div>
                 <div class="year-events">
@@ -160,6 +174,7 @@
                 </div>
             </div>
             
+            <!-- 1999年 区块 -->
             <div class="year-group">
                 <div class="year-label">1999年</div>
                 <div class="year-events">
@@ -174,6 +189,7 @@
                 </div>
             </div>
 
+            <!-- 1998年 区块 -->
             <div class="year-group">
                 <div class="year-label">1998年</div>
                 <div class="year-events">
@@ -184,6 +200,7 @@
                 </div>
             </div>
 
+            <!-- 1997年 区块 -->
             <div class="year-group">
                 <div class="year-label">1997年</div>
                 <div class="year-events">
@@ -193,6 +210,7 @@
                 </div>
             </div>
 
+            <!-- 1996年 区块 -->
             <div class="year-group">
                 <div class="year-label">1996年</div>
                 <div class="year-events">
