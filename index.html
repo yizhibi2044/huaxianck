@@ -61,28 +61,36 @@
             margin-left: 1cm;    /* 👈 严格保持在名字右侧 1CM 处 */
         }
 
-        /* 🌟 极致画廊极简风：按钮基础样式 */
+        /* 🌟 画廊极简风：按钮基础样式（平时为干净的白底、黑字、细灰边框） */
         .btn-social {
             display: inline-flex;
             align-items: center;
             gap: 6px;
             padding: 5px 12px;
-            border-radius: 3px;   /* 更加方正古典的微圆角，比大圆角更具画廊感 */
-            font-size: 12px;
+            border-radius: 20px;   /* 保持您最初设定的精致圆角 */
+            font-size: 13px;
             text-decoration: none;
             font-weight: 400;
-            transition: all 0.2s ease-in-out;
-            border: 1px solid #dcdcdc; /* 极其克制的细边框 */
-            color: #111111;       /* 干净的黑字 */
-            background-color: #ffffff; /* 干净的白底 */
+            transition: all 0.25s ease;
+            border: 1px solid #e1e1e1; /* 平时是低调不抢戏的浅灰边框 */
+            color: #444444;            /* 儒雅深灰字 */
+            background-color: #ffffff; /* 干净白底 */
         }
 
-        /* 🌟 极简画廊悬停：不使用任何刺眼彩色，仅做极其内敛的灰度反馈 */
-        .btn-social:hover {
-            color: #000000;
-            border-color: #111111; /* 悬停时边框加深 */
-            background-color: #fafafa; /* 悬停时背景泛起极淡的灰调 */
-            box-shadow: none; /* 彻底去除刺眼的彩色阴影 */
+        /* 🌟 Instagram 悬停渐变效果 */
+        .btn-instagram:hover {
+            color: #ffffff;
+            background: linear-gradient(45deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%);
+            border-color: transparent;
+            box-shadow: 0 4px 12px rgba(220, 39, 67, 0.2);
+        }
+
+        /* 🌟 小红书 悬停变红效果 */
+        .btn-xhs:hover {
+            color: #ffffff;
+            background-color: #ff2442; /* 小红书经典红 */
+            border-color: #ff2442;
+            box-shadow: 0 4px 12px rgba(255, 36, 66, 0.2);
         }
 
         /* 🌟 新增：SVG 图标对齐 */
@@ -350,17 +358,15 @@
     <div class="wrapper">
         
         <header>
-            <!-- 左侧名字与邮箱简介 -->
             <div class="brand-container">
                 <h1>
                     Huaxian Du 杜华显
-                    <!-- 🌟 按钮直接嵌套在h1中，保证与名字处于同行并距离名字右侧 1CM -->
                     <div class="name-social-wrap">
-                        <a href="https://www.instagram.com/duhuaxian__painter?igsh=MW1ld2p3bWpyYTR6ZA%3D%3D&utm_source=qr" target="_blank" class="btn-social">
+                        <a href="https://www.instagram.com/duhuaxian__painter?igsh=MW1ld2p3bWpyYTR6ZA%3D%3D&utm_source=qr" target="_blank" class="btn-social btn-instagram">
                             <svg class="social-icon" viewBox="0 0 24 24" width="13" height="13"><path fill="currentColor" d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.051.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 1 0 0 12.324 6.162 6.162 0 0 0 0-12.324zM12 16a4 4 0 1 1 0-8 4 4 0 0 1 0 8zm6.406-11.845a1.44 1.44 0 1 0 0 2.881 1.44 1.44 0 0 0 0-2.881z"/></svg>
                             Instagram
                         </a>
-                        <a href="https://www.xiaohongshu.com/user/profile/5fb2659400000000010060eb?xsec_token=YBpQQpwiyiicT7br8pYDTc4Q-s6b3nHXL0fAHRZph42Xg=&xsec_source=app_share&xhsshare=WeixinSession&appuid=5fb2659400000000010060eb&apptime=1780405976&share_id=aba03e31d78a43d5ab2bfd68bae0c9b5" target="_blank" class="btn-social">
+                        <a href="https://www.xiaohongshu.com/user/profile/5fb2659400000000010060eb?xsec_token=YBpQQpwiyiicT7br8pYDTc4Q-s6b3nHXL0fAHRZph42Xg=&xsec_source=app_share&xhsshare=WeixinSession&appuid=5fb2659400000000010060eb&apptime=1780405976&share_id=aba03e31d78a43d5ab2bfd68bae0c9b5" target="_blank" class="btn-social btn-xhs">
                             <svg class="social-icon" viewBox="0 0 24 24" width="13" height="13"><path fill="currentColor" d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm-5 14H7v-2h7v2zm3-4H7v-2h10v2zm0-4H7V7h10v2z"/></svg>
                             小红书
                         </a>
@@ -483,7 +489,7 @@ July 2024: Du Huaxian’s *Fishermen’s Songs and Morning Glow Celebrate the Na
 2024年《渔获》入选北京美协第二十一届新人新作展
 2023年作品参加北京艺术博览会
 2023年《荣祥广场一角》入选“北京意象·多彩顺义”大型美术创作活动并在中国美术馆展出（北京美术家协会）
-2019年作品《姑射 猕猴桃谷》入选北京意象昌平大型美术创作并在中国美术馆展出（北京美术家协会）
+2019年作品《姑射 猕猴桃谷》入选北京意象昌平大型美术创作并在中国美术馆展出（北京美术家协会)
 2018年作品《夜色》入选北京意象 诗话海淀大型美术创作并在中国美术馆展出（北京美术家协会）
 2018年，2019年作品入选得境取象东亿中国油画展
 2018年《正午高原》入选第七届高原展并获优秀奖</p>
