@@ -16,8 +16,18 @@
             
             /* ⚡ 核心修复：强制头部所有文字使用无衬线黑体族，彻底告别宋体 */
             font-family: -apple-system, BlinkMacSystemFont, "PingFang SC", "Helvetica Neue", "Microsoft YaHei", Arial, sans-serif;
+
+            /* 🌟 新增：使用 Flex 布局让名字和按钮分居左右 */
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
         }
         
+        /* 名字区域盒 */
+        .brand-container {
+            flex: 1;
+        }
+
         /* ✒️ 最上面两行字改为细黑体（大小保持不变） */
         header h1 {
             font-weight: 300;     /* 300 表示轻细体，即细黑体 */
@@ -26,6 +36,7 @@
         }
         header .subtitle {
             font-weight: 300;     /* 邮箱行同样采用细黑体 */
+            margin: 0;
         }
 
         /* ✉️ 邮箱链接的高级定制样式 */
@@ -37,6 +48,58 @@
         .email-link:hover {
             color: #000000;       /* 悬停时加深 */
             text-decoration: underline; /* 悬停时显示下划线提示 */
+        }
+
+        /* 🌟 新增：右侧社交媒体链接按钮区域 */
+        .social-links {
+            display: flex;
+            gap: 12px;           /* 两个按钮之间的间距 */
+            align-items: center;
+            margin-top: 4px;     /* 微调与名字的水平对齐 */
+        }
+
+        /* 🌟 新增：社交按钮基础样式（走极简画廊风） */
+        .btn-social {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            padding: 6px 14px;
+            border-radius: 20px;
+            font-size: 13px;
+            text-decoration: none;
+            font-weight: 400;
+            transition: all 0.25s ease;
+            border: 1px solid #e1e1e1;
+        }
+
+        /* 🌟 新增：Instagram 悬停渐变效果 */
+        .btn-instagram {
+            color: #444;
+            background-color: #fff;
+        }
+        .btn-instagram:hover {
+            color: #fff;
+            background: linear-gradient(45deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%);
+            border-color: transparent;
+            box-shadow: 0 4px 12px rgba(220, 39, 67, 0.2);
+        }
+
+        /* 🌟 新增：小红书 悬停变红效果 */
+        .btn-xhs {
+            color: #444;
+            background-color: #fff;
+        }
+        .btn-xhs:hover {
+            color: #fff;
+            background-color: #ff2442; /* 小红书经典红 */
+            border-color: #ff2442;
+            box-shadow: 0 4px 12px rgba(255, 36, 66, 0.2);
+        }
+
+        /* 🌟 新增：SVG 图标对齐 */
+        .social-icon {
+            display: inline-block;
+            vertical-align: middle;
         }
         
         /* 小图下方文字的独立样式 */
@@ -259,7 +322,21 @@
             margin-top: 8px;
         }
 
+        /* 适配移动端：当屏幕宽度小于 768px 时，名字和链接变为上下排列 */
         @media (max-width: 768px) {
+            header {
+                flex-direction: column;
+                gap: 15px;
+                padding-left: 20px;
+                padding-right: 20px;
+            }
+            .social-links {
+                margin-top: 0;
+            }
+            .gallery-container {
+                padding-left: 20px;
+                padding-right: 20px;
+            }
             .profile-container {
                 flex-direction: column;
                 gap: 30px;
@@ -279,8 +356,25 @@
     <div class="wrapper">
         
         <header>
-            <h1>Huaxian Du 杜华显</h1>
-            <p class="subtitle"> A Chinese oil painter,Lucky Dog, Email:  <a href="mailto:dhx1974@gmail.com" class="email-link"> dhx1974@gmail.com</a>.</p>
+            <!-- 左侧名字与邮箱简介 -->
+            <div class="brand-container">
+                <h1>Huaxian Du 杜华显</h1>
+                <p class="subtitle"> A Chinese oil painter,Lucky Dog, Email:  <a href="mailto:dhx1974@gmail.com" class="email-link"> dhx1974@gmail.com</a>.</p>
+            </div>
+
+            <!-- 👉 右侧新加入的 Instagram 与小红书链接按钮区域 -->
+            <div class="social-links">
+                <!-- 💡 请把下面的 href="#" 替换成您真实的 Instagram 主页链接 -->
+                <a href="#" target="_blank" class="btn-social btn-instagram">
+                    <svg class="social-icon" viewBox="0 0 24 24" width="15" height="15"><path fill="currentColor" d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.051.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 1 0 0 12.324 6.162 6.162 0 0 0 0-12.324zM12 16a4 4 0 1 1 0-8 4 4 0 0 1 0 8zm6.406-11.845a1.44 1.44 0 1 0 0 2.881 1.44 1.44 0 0 0 0-2.881z"/></svg>
+                    Instagram
+                </a>
+                <!-- 💡 请把下面的 href="#" 替换成您真实的小红书主页链接 -->
+                <a href="#" target="_blank" class="btn-social btn-xhs">
+                    <svg class="social-icon" viewBox="0 0 24 24" width="15" height="15"><path fill="currentColor" d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm-5 14H7v-2h7v2zm3-4H7v-2h10v2zm0-4H7V7h10v2z"/></svg>
+                    小红书
+                </a>
+            </div>
         </header>
 
         <div class="gallery-container">
